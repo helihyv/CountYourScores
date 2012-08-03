@@ -25,7 +25,7 @@ Page {
             model: 4
         Label
             {
-                width: 100
+                width: 95
                 height: 50
                 text: "Player" + (index+1)
                 color: (index+1 == currentPlayer) ? "red" : "black"
@@ -187,10 +187,11 @@ Page {
     GridView
     {
 //        anchors.fill: parent
-        anchors.top: addGameButton.bottom
+        anchors.top: appWindow.inPortrait ? addGameButton.bottom : parent.top
+        anchors.topMargin: 20
         anchors.bottom: parent.bottom
 //        anchors.top: parent.verticalCenter
-        anchors.left: parent.left
+        anchors.left: appWindow.inPortrait ? parent.left : players.right
         anchors.right: parent.right
 //        anchors.horizontalCenter: parent.horizontalCenter
         model: numbersList
