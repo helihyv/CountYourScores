@@ -93,6 +93,7 @@ Page {
                 Label
                 {
                     width: 100
+                    height: 30
                     text: "Game " + (index+1)
                 }
             }
@@ -150,7 +151,7 @@ Page {
             Label
             {
                 property int player: index +1
-                property int totalScore
+                property int totalScore: 0
                 width: 100
                 text: totalScore
             }
@@ -214,6 +215,10 @@ Page {
 
                     parent.color = "red"
                     scoresModel.get(4*(games-1) + currentPlayer-1).score += display
+
+
+
+                    totalScoreRepeater.itemAt(currentPlayer-1).totalScore += display
                 }
 
 
