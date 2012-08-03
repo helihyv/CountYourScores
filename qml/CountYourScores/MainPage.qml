@@ -16,9 +16,25 @@ Page {
     {
         anchors.fill: parent
         model: numbersList
-        delegate: Label
+        delegate: Rectangle
         {
-            text: display
+            width: 100
+            height:100
+            border.width: 1
+
+            Label
+            {
+                text: display
+//            horizontalAlignment: Text.AlignHCenter
+//            verticalAlignment: Text.AlignVCenter
+            }
+
+            MouseArea
+            {
+                anchors.fill: parent
+                onPressed: parent.color = "red"
+            }
+
         }
     }
 }
