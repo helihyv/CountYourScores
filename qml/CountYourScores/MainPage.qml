@@ -115,6 +115,8 @@ Page {
             anchors.bottom: totalScores.top
             id: scoreView
 
+            boundsBehavior: Flickable.StopAtBounds
+
             cellHeight: 30
             cellWidth: 95
 
@@ -168,6 +170,7 @@ Page {
 
     GridView
     {
+
 //        anchors.fill: parent
         anchors.top: appWindow.inPortrait ? totalScores.bottom : parent.top
         anchors.topMargin: 20
@@ -176,6 +179,9 @@ Page {
         anchors.left: appWindow.inPortrait ? parent.left : players.right
         anchors.right: parent.right
 //        anchors.horizontalCenter: parent.horizontalCenter
+
+        boundsBehavior: Flickable.StopAtBounds
+
         model: numbersList
         delegate: Rectangle
         {
@@ -246,6 +252,8 @@ Page {
         anchors.right: parent.right
         model: addedModel
         orientation: ListView.Horizontal
+
+        boundsBehavior: Flickable.StopAtBounds
 
         delegate: Label
             {
