@@ -1,5 +1,5 @@
 import QtQuick 1.1
-import com.nokia.meego 1.0
+import com.nokia.meego 1.1
 import countyourscores 0.1
 
 Page {
@@ -33,7 +33,11 @@ Page {
                 MouseArea
                 {
                     anchors.fill: parent
-                    onClicked: currentPlayer = index+1
+                    onClicked:
+                    {
+                        currentPlayer = index+1
+                        addedModel.clear()
+                    }
                 }
             }
         }
@@ -175,6 +179,8 @@ Page {
             scoresModel.append({"score": 0,"player": 3})
             scoresModel.append({"score": 0,"player": 4})
 
+            addedModel.clear()
+
         }
     }
 
@@ -189,7 +195,7 @@ Page {
 //        anchors.fill: parent
         anchors.top: appWindow.inPortrait ? addGameButton.bottom : parent.top
         anchors.topMargin: 20
-        anchors.bottom: parent.bottom
+        anchors.bottom: addedView.top
 //        anchors.top: parent.verticalCenter
         anchors.left: appWindow.inPortrait ? parent.left : players.right
         anchors.right: parent.right
@@ -221,6 +227,8 @@ Page {
 
 
                     totalScoreRepeater.itemAt(currentPlayer-1).totalScore += display
+
+                    addedModel.append({"number" : display})
                 }
 
                 onPressed:
@@ -242,5 +250,29 @@ Page {
             }
 
         }
+    }
+
+    ListModel
+    {
+        id: addedModel
+
+    }
+
+    ListView
+    {
+        id: addedView
+        anchors.bottom: parent.bottom
+        height: 30
+        anchors.left: parent.left
+        anchors.right: parent.right
+        model: addedModel
+        orientation: ListView.Horizontal
+
+        delegate: Label
+            {
+                text: number
+                width: 50
+            }
+
     }
 }
