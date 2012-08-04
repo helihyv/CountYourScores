@@ -158,15 +158,7 @@ Page {
         }
     }
 
-    Button
-    {
-        id: addGameButton
-        anchors.top: totalScores.bottom
 
-        text: "Add game"
-
-
-    }
 
     ReplaceableIntegerListModel
     {
@@ -177,7 +169,7 @@ Page {
     GridView
     {
 //        anchors.fill: parent
-        anchors.top: appWindow.inPortrait ? addGameButton.bottom : parent.top
+        anchors.top: appWindow.inPortrait ? totalScores.bottom : parent.top
         anchors.topMargin: 20
         anchors.bottom: addedView.top
 //        anchors.top: parent.verticalCenter
