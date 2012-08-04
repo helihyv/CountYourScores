@@ -46,7 +46,10 @@ PageStackWindow {
             {
                 mainPage.addGame()
                 if (mainPage.games > 8)
+                {
                     enabled = false
+                    platformIconId = "toolbar-next-dimmed"
+                }
             }
         }
 
@@ -58,6 +61,7 @@ PageStackWindow {
             {
                 mainPage.clearScores()
                 addGameIcon.enabled = true
+                addGameIcon.platformIconId = "toolbar-next"
 
             }
         }
