@@ -39,8 +39,15 @@ PageStackWindow {
         ToolIcon
 
         {
+            id: addGameIcon
             platformIconId: "toolbar-next"
             visible: pageStack.currentPage == mainPage ? true : false
+            onClicked:
+            {
+                mainPage.addGame()
+                if (mainPage.games > 8)
+                    enabled = false
+            }
         }
 
         ToolIcon
@@ -50,6 +57,8 @@ PageStackWindow {
             onClicked:
             {
                 mainPage.clearScores()
+                addGameIcon.enabled = true
+
             }
         }
 

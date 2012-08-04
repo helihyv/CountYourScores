@@ -51,25 +51,21 @@ Page {
         ListElement
         {
             score: 0
-            player: 1
         }
 
         ListElement
         {
             score: 0
-            player: 2
         }
 
         ListElement
         {
             score: 0
-            player: 3
         }
 
         ListElement
         {
             score: 0
-            player: 4
         }
     }
 
@@ -168,20 +164,8 @@ Page {
         anchors.top: totalScores.bottom
 
         text: "Add game"
-        onClicked:
-        {
-            games++
-            if (games >8)
-                enabled = false
 
-            scoresModel.append({"score": 0,"player": 1})
-            scoresModel.append({"score": 0,"player": 2})
-            scoresModel.append({"score": 0,"player": 3})
-            scoresModel.append({"score": 0,"player": 4})
 
-            addedModel.clear()
-
-        }
     }
 
     ReplaceableIntegerListModel
@@ -301,6 +285,21 @@ Page {
             totalScoreRepeater.itemAt(currentPlayer-1).totalScore -= addedModel.get(addedModel.count-1).number
             addedModel.remove(addedModel.count-1)
         }
+    }
+
+    function addGame()
+    {
+        games++
+//        if (games >8)
+//            commonTools. = false
+
+        for (var i = 0; i<4; i++)
+        {
+            scoresModel.append({"score" : 0})
+        }
+
+        addedModel.clear()
+
     }
 
 }
