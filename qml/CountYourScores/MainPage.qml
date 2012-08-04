@@ -275,4 +275,15 @@ Page {
             }
 
     }
+
+    function clearScores()
+    {
+        scoresModel.clear()
+        for (var i = 0; i<4; i++)
+        {
+            scoresModel.append({"score" : 0})
+        }
+        games = 1
+    }
+
 }

@@ -30,6 +30,7 @@ PageStackWindow {
         {
             platformIconId: "toolbar-undo"
             visible: pageStack.currentPage == mainPage ? true : false
+//            onClicked:
         }
 
         ToolIcon
@@ -43,6 +44,10 @@ PageStackWindow {
         {
             platformIconId: "toolbar-delete"
             visible: pageStack.currentPage == mainPage ? true : false
+            onClicked:
+            {
+                mainPage.clearScores()
+            }
         }
 
         ToolIcon {
