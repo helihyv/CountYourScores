@@ -10,9 +10,41 @@ PageStackWindow {
         id: mainPage
     }
 
+    AboutPage
+    {
+        id: aboutPage
+    }
+
     ToolBarLayout {
         id: commonTools
         visible: true
+
+        ToolIcon
+        {
+            platformIconId: "toolbar-back"
+            onClicked: pageStack.pop()
+            visible: pageStack.currentPage == mainPage ? false : true
+        }
+
+        ToolIcon
+        {
+            platformIconId: "toolbar-undo"
+            visible: pageStack.currentPage == mainPage ? true : false
+        }
+
+        ToolIcon
+
+        {
+            platformIconId: "toolbar-next"
+            visible: pageStack.currentPage == mainPage ? true : false
+        }
+
+        ToolIcon
+        {
+            platformIconId: "toolbar-delete"
+            visible: pageStack.currentPage == mainPage ? true : false
+        }
+
         ToolIcon {
             platformIconId: "toolbar-view-menu"
             anchors.right: (parent === undefined) ? undefined : parent.right
@@ -24,7 +56,12 @@ PageStackWindow {
         id: myMenu
         visualParent: pageStack
         MenuLayout {
-            MenuItem { text: qsTr("Sample menu item") }
+            MenuItem
+            {
+                text: qsTr("About")
+                onClicked: pageStack.push(aboutPage)
+            }
+
         }
     }
 }

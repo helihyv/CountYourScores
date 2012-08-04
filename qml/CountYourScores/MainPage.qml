@@ -211,15 +211,31 @@ Page {
             MouseArea
             {
                 anchors.fill: parent
-                onPressed:
+                hoverEnabled: true
+                onClicked:
                 {
 
-                    parent.color = "red"
+
                     scoresModel.get(4*(games-1) + currentPlayer-1).score += display
 
 
 
                     totalScoreRepeater.itemAt(currentPlayer-1).totalScore += display
+                }
+
+                onPressed:
+                {
+                    parent.color = "red"
+                }
+
+                onReleased:
+                {
+                    parent.color = "white"
+                }
+
+                onExited:
+                {
+                    parent.color = "white"
                 }
 
 
