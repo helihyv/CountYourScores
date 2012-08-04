@@ -214,6 +214,7 @@ Page {
                     totalScoreRepeater.itemAt(currentPlayer-1).totalScore += display
 
                     addedModel.append({"number" : display})
+                    addedView.positionViewAtEnd ()
                 }
 
                 onPressed:
