@@ -209,9 +209,12 @@ Page {
 
             Label
             {
+                anchors.fill: parent
                 text: display
-//            horizontalAlignment: Text.AlignHCenter
-//            verticalAlignment: Text.AlignVCenter
+                font.pointSize: 64
+                font.bold: true
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
             }
 
             MouseArea
@@ -282,8 +285,22 @@ Page {
         for (var i = 0; i<4; i++)
         {
             scoresModel.append({"score" : 0})
+            totalScoreRepeater.itemAt(i).totalScore = 0
         }
         games = 1
+        addedModel.clear()
+
+
+    }
+
+    function undo()
+    {
+        if (addedModel.count > 0)
+        {
+            scoresModel.get(4*(games-1) + currentPlayer-1).score -= addedModel.get(addedModel.count-1).number
+            totalScoreRepeater.itemAt(currentPlayer-1).totalScore -= addedModel.get(addedModel.count-1).number
+            addedModel.remove(addedModel.count-1)
+        }
     }
 
 }

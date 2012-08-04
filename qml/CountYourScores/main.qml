@@ -30,7 +30,10 @@ PageStackWindow {
         {
             platformIconId: "toolbar-undo"
             visible: pageStack.currentPage == mainPage ? true : false
-//            onClicked:
+            onClicked:
+            {
+                mainPage.undo()
+            }
         }
 
         ToolIcon
