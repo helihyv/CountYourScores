@@ -111,7 +111,7 @@ Page {
 
             anchors.top: players.bottom
             anchors.left: gameTexts.right
-            anchors.right: parent.right
+            anchors.right: appWindow.inPortrait ? parent.right : players.right
             anchors.bottom: totalScores.top
             id: scoreView
 
