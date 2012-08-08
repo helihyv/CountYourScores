@@ -1,8 +1,9 @@
 import QtQuick 1.1
-import com.nokia.meego 1.0
+import org.maemo.fremantle 1.0
 
 PageStackWindow {
     id: appWindow
+
 
     initialPage: mainPage
 
@@ -14,6 +15,10 @@ PageStackWindow {
     {
         id: aboutPage
     }
+
+    showStatusBar: false //give more room to the application itself
+    allowSwitch: false  //disables the minimize mouse area in the left corner of the screen
+    allowClose: false //disables the close mouse area in the right corner of the screen
 
     ToolBarLayout {
         id: commonTools
@@ -82,6 +87,20 @@ PageStackWindow {
                 text: qsTr("About")
                 onClicked: pageStack.push(aboutPage)
             }
+
+            MenuItem
+            {
+                text: qsTr("Quit")
+                onClicked: Qt.quit()
+            }
+
+            MenuItem
+            {
+                text: qsTr("Minimize")
+                onClicked: screen.minimized = true
+            }
+
+
 
         }
     }
