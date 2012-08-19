@@ -171,6 +171,8 @@ Page {
     GridView
     {
 
+        id: numbersView
+
 //        anchors.fill: parent
         anchors.top: appWindow.inPortrait ? totalScores.bottom : parent.top
         anchors.topMargin: 20
@@ -250,7 +252,7 @@ Page {
         anchors.bottom: parent.bottom
         height: 30
         anchors.left: parent.left
-        anchors.right: parent.right
+        anchors.right: appWindow.inPortrait ? parent.right : numbersView.left
         model: addedModel
         orientation: ListView.Horizontal
 
