@@ -146,6 +146,17 @@ Page {
 
                 width: 100
                 text: score
+
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onClicked:
+                    {
+                        currentPlayer = (index % 4) + 1
+                        addedModel.clear()
+                    }
+
+                }
             }
 
         }
