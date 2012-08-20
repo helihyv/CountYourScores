@@ -28,17 +28,24 @@ ReplaceableIntegerListModel::ReplaceableIntegerListModel(QObject *parent) :
     values_.append(1);
     values_.append(2);
     values_.append(3);
-    values_.append(20);
+
 
     values_.append(4);
     values_.append(5);
     values_.append(6);
-    values_.append(50);
+
 
     values_.append(7);
     values_.append(8);
     values_.append(9);
+
+    values_.append(10);
+    values_.append(20);
+    values_.append(25);
+
+    values_.append(50);
     values_.append(75);
+    values_.append(100);
 
 }
 
