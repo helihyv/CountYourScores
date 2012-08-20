@@ -147,6 +147,8 @@ Page {
                 width: 100
                 text: score
 
+                color: (index % 4) +1 == currentPlayer ? "red" : "black"
+
                 MouseArea
                 {
                     anchors.fill: parent
