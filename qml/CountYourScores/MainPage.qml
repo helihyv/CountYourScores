@@ -203,11 +203,14 @@ Page {
 
         boundsBehavior: Flickable.StopAtBounds
 
+        cellHeight: 95
+        cellWidth: 95
+
         model: numbersList
         delegate: Rectangle
         {
-            width: 100
-            height:100
+            width: 95
+            height:95
             border.width: 1
 
             Label
