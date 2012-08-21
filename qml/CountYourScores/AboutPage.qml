@@ -27,7 +27,9 @@ Page
 
     Label
     {
+        anchors.fill: parent
 
-        text: "CountYourScores v. 0.1 \n  (c) Heli Hyvättinen 2012\n This program is free software under the General Public License 3"
+        text: "CountYourScores v. 0.1 \n  (c) Heli Hyvättinen 2012\nThis program is free software under the General Public License 3"
+        wrapMode: Text.Wrap
     }
 }
