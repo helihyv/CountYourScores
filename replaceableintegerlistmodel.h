@@ -21,6 +21,7 @@
 #define REPLACEABLEINTEGERLISTMODEL_H
 
 #include <QAbstractListModel>
+#include <QStringList>
 
 class ReplaceableIntegerListModel : public QAbstractListModel
 {
@@ -32,15 +33,20 @@ public:
 
     QVariant data(const QModelIndex &index, int role) const;
 
+    Q_INVOKABLE QStringList getSetNames();
 
     
 signals:
     
 public slots:
 
+    void switchToNumberSet(QString set);
+    void saveSet(QString name, QList<int> numbers);
+
 protected:
 
     QList<int> values_;
+    QList<int> defaultValues_;
     
 };
 
