@@ -33,6 +33,10 @@ Page
         {
             numberSetNamesModel.populate()
             numberSetNamesModel.count = numberSetNamesModel.rowCount()
+
+            numberSetNamesModel.populate()
+            numberSetNamesModel.count = numberSetNamesModel.rowCount()
+
             console.debug("Count is " + numberSetNamesModel.count)
         }
 
