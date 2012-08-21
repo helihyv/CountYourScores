@@ -33,9 +33,7 @@ CONFIG += qdeclarative-boostable
 SOURCES += main.cpp \
     replaceableintegerlistmodel.cpp \
     settingshandler.cpp \
-    numbersetmodel.cpp \
-    numbersetnamesmodel.cpp \
-    numbersetnameslist.cpp
+    numbersetnamesmodel.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -59,6 +57,4 @@ OTHER_FILES += \
 HEADERS += \
     replaceableintegerlistmodel.h \
     settingshandler.h \
-    numbersetmodel.h \
-    numbersetnamesmodel.h \
-    numbersetnameslist.h
+    numbersetnamesmodel.h
