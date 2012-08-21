@@ -19,33 +19,42 @@
 **************************************************************************/
 
 #include "replaceableintegerlistmodel.h"
+#include <QSettings>
+//#include <QList>
 
 ReplaceableIntegerListModel::ReplaceableIntegerListModel(QObject *parent) :
     QAbstractListModel(parent)
 {
     //Testcode
 
-    values_.append(1);
-    values_.append(2);
-    values_.append(3);
+    defaultValues_.append(1);
+    defaultValues_.append(2);
+    defaultValues_.append(3);
 
 
-    values_.append(4);
-    values_.append(5);
-    values_.append(6);
+    defaultValues_.append(4);
+    defaultValues_.append(5);
+    defaultValues_.append(6);
 
 
-    values_.append(7);
-    values_.append(8);
-    values_.append(9);
+    defaultValues_.append(7);
+    defaultValues_.append(8);
+    defaultValues_.append(9);
 
-    values_.append(10);
-    values_.append(20);
-    values_.append(25);
+    defaultValues_.append(10);
+    defaultValues_.append(20);
+    defaultValues_.append(25);
 
-    values_.append(50);
-    values_.append(75);
-    values_.append(100);
+    defaultValues_.append(50);
+    defaultValues_.append(75);
+    defaultValues_.append(100);
+
+    QSettings settings;
+
+    QString currentSet = settings.value("currentset","default").toString();
+
+    switchToNumberSet(currentSet);
+
 
 }
 
@@ -76,4 +85,67 @@ QVariant ReplaceableIntegerListModel::data(const QModelIndex &index, int role) c
             return QVariant();
 
     }
+}
+
+QStringList ReplaceableIntegerListModel::getSetNames()
+{
+    QSettings settings;
+
+    settings.beginGroup("sets"); //get only the keys for sets, not for other settings
+    QStringList sets = settings.allKeys();
+
+    sets.prepend("default"); //add the built-in number set
+
+    return sets;
+
+}
+
+void ReplaceableIntegerListModel::switchToNumberSet(QString set)
+{
+
+
+    if (set == "default")
+        values_ = defaultValues_;
+
+    else
+    {
+        values_.clear();
+
+        QSettings settings;
+        settings.beginGroup("sets");
+
+        QList<QVariant> list = settings.value(set).toList();
+
+        //convert QVariant list to integer list and set it as used list
+
+        QVariant number;
+        foreach (number, list)
+        {
+            values_.append(number.toInt());
+        }
+    }
+
+
+}
+
+void ReplaceableIntegerListModel::saveSet(QString name, QList<int> numbers)
+{
+
+    //convert integer list to QVariant list for saving
+
+    QList<QVariant> numbersList;
+    int number;
+
+    foreach (number,numbers)
+    {
+        numbersList.append(number);
+    }
+
+    //save the list
+
+    QSettings settings;
+    settings.beginGroup("sets");
+
+    settings.setValue(name,numbersList);
+
 }
