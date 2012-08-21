@@ -21,13 +21,22 @@
 #include "qmlapplicationviewer.h"
 #include <QtDeclarative>
 #include "replaceableintegerlistmodel.h"
+#include "settingshandler.h"
+#include "numbersetnamesmodel.h"
+#include "numbersetnameslist.h"
 //#include <QDebug>
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 
-   qmlRegisterType<ReplaceableIntegerListModel> ("countyourscores",0,1,"ReplaceableIntegerListModel");
+    app->setApplicationName("CountYourScores");
+    app->setOrganizationName("CountYourScores");
+
+   qmlRegisterType<ReplaceableIntegerListModel> ("countyourscores",0,1,"ReplaceableIntegerListModel");  
+   qmlRegisterType<SettingsHandler> ("countyourscores",0,1,"SettingsHandler");
+   qmlRegisterType<NumberSetNamesModel> ("countyourscores",0,1,"NumberSetNamesModel");
+//   qmlRegisterType<NumbersetNamesList> ("countyourscores",0,1,"NumbersetNamesList");
 
 
     QmlApplicationViewer viewer;
