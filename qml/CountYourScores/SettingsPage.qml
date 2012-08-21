@@ -26,14 +26,19 @@ Page
 {
     property variant sets
 
-    Component.onCompleted:
+    onStatusChanged:
     {
-        numberSetNamesModel.count = numberSetNamesModel.rowCount()
+
+        if (status == PageStatus.Activating)
+        {
+            numberSetNamesModel.populate()
+            numberSetNamesModel.count = numberSetNamesModel.rowCount()
 
             numberSetNamesModel.populate()
             numberSetNamesModel.count = numberSetNamesModel.rowCount()
 
-        console.debug("Count is " + numberSetNamesModel.count)
+            console.debug("Count is " + numberSetNamesModel.count)
+        }
 
     }
 
@@ -43,18 +48,18 @@ Page
         id: settingsHandler
     }
 
-    Label
-    {
-        id: numberSetLabel
-        anchors.top: parent.top
-        text: qsTr("Select a number set")
-    }
+//    Label
+//    {
+//        id: numberSetLabel
+//        anchors.top: parent.top
+//        text: qsTr("Select a number set")
+//    }
 
     Button
     {
         id: selectNumberSetButton
         anchors.top: parent.top
-        text: qsTr("Select a number set:")
+        text: qsTr("Select a number set")
 
         onClicked:
         {
@@ -89,6 +94,11 @@ Page
         id: numberSetDialog
 
         model: numberSetNamesModel
+
+        titleText: qsTr("Choose the number list")
+
+        selectedIndex: 0
+
 //        model: ListModel
 //        {
 //            ListElement

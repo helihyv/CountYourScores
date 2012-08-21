@@ -31,10 +31,14 @@ public:
     Q_INVOKABLE int rowCount(const QModelIndex &parent= QModelIndex()) const; //Re-implemented  just to add Q_INVOKABLE
 
     QVariant data(const QModelIndex &index, int role) const;
+
+
     
 signals:
     
 public slots:
+
+    void populate();
     
 };
 
