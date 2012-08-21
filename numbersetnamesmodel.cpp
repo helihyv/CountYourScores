@@ -33,18 +33,8 @@ NumberSetNamesModel::NumberSetNamesModel(QObject *parent) :
     roles[nameRole] = "name";
     setRoleNames(roles);
 
-    //populate the model
+    //populating the model must be done later for the contents to show up in QML!
 
-    QSettings settings;
-
-    settings.beginGroup("sets"); //get only the keys for sets, not for other settings
-    QStringList sets = settings.allKeys();
-
-    sets.prepend("default"); //add the built-in number set
-
-    setStringList(sets);
-
-    qDebug() << data(createIndex(0,0),nameRole).toString() ;
 }
 
 int NumberSetNamesModel::rowCount(const QModelIndex &parent) const
@@ -65,4 +55,22 @@ QVariant NumberSetNamesModel::data(const QModelIndex &index, int role) const
     //Otherwise busines as usual...
 
     return QStringListModel::data(index,role);
+}
+
+void NumberSetNamesModel::populate()
+{
+
+    //populate the model
+
+    QSettings settings;
+
+    settings.beginGroup("sets"); //get only the keys for sets, not for other settings
+    QStringList sets = settings.allKeys();
+
+    sets.prepend("default"); //add the built-in number set
+    sets.append("Testing!!!");
+
+    setStringList(sets);
+
+    qDebug() << data(createIndex(0,0),nameRole).toString() ;
 }
