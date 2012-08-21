@@ -31,29 +31,17 @@ Page
 
         if (status == PageStatus.Activating)
         {
-            numberSetNamesModel.populate()
-            numberSetNamesModel.count = numberSetNamesModel.rowCount()
+            //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
 
             numberSetNamesModel.populate()
             numberSetNamesModel.count = numberSetNamesModel.rowCount()
 
-            console.debug("Count is " + numberSetNamesModel.count)
+            numberSetNamesModel.populate()
+            numberSetNamesModel.count = numberSetNamesModel.rowCount()
         }
 
     }
 
-
-    SettingsHandler
-    {
-        id: settingsHandler
-    }
-
-//    Label
-//    {
-//        id: numberSetLabel
-//        anchors.top: parent.top
-//        text: qsTr("Select a number set")
-//    }
 
     Button
     {
@@ -64,8 +52,6 @@ Page
         onClicked:
         {
             numberSetDialog.open()
-            console.debug("Count is " + numberSetNamesModel.count)
-
         }
     }
 
@@ -77,18 +63,6 @@ Page
 
     }
 
-//    NumberSetNamesList
-//    {
-//        id: numberSetNamesList
-//    }
-
-
-//    ListView
-//    {
-//        model: numberSetNamesModel
-
-//    }
-
     SelectionDialog
     {
         id: numberSetDialog
@@ -98,19 +72,6 @@ Page
         titleText: qsTr("Choose the number list")
 
         selectedIndex: 0
-
-//        model: ListModel
-//        {
-//            ListElement
-//            {
-//                name: "töttöröö!"
-//            }
-//        }
-
-
-
-    }
-
-
+   }
 
 }

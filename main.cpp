@@ -34,9 +34,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     app->setOrganizationName("CountYourScores");
 
    qmlRegisterType<ReplaceableIntegerListModel> ("countyourscores",0,1,"ReplaceableIntegerListModel");  
-   qmlRegisterType<SettingsHandler> ("countyourscores",0,1,"SettingsHandler");
+//   qmlRegisterType<SettingsHandler> ("countyourscores",0,1,"SettingsHandler");
    qmlRegisterType<NumberSetNamesModel> ("countyourscores",0,1,"NumberSetNamesModel");
-//   qmlRegisterType<NumbersetNamesList> ("countyourscores",0,1,"NumbersetNamesList");
 
     QmlApplicationViewer viewer;
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
