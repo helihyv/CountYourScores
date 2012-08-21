@@ -146,6 +146,19 @@ Page {
 
                 width: 100
                 text: score
+
+                color: (index % 4) +1 == currentPlayer ? "red" : "black"
+
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onClicked:
+                    {
+                        currentPlayer = (index % 4) + 1
+                        addedModel.clear()
+                    }
+
+                }
             }
 
         }
@@ -173,8 +186,20 @@ Page {
             {
                 property int player: index +1
                 property int totalScore: 0
-                width: 100
+                width: 95
                 text: totalScore
+
+                color: (index+1 == currentPlayer) ? "red" : "black"
+
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onClicked:
+                    {
+                        currentPlayer = index+1
+                        addedModel.clear()
+                    }
+                }
             }
         }
     }
