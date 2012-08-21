@@ -18,7 +18,7 @@
 **************************************************************************/
 
 import QtQuick 1.1
-import com.nokia.meego 1.0
+import com.nokia.meego 1.1
 
 PageStackWindow {
     id: appWindow
@@ -32,6 +32,11 @@ PageStackWindow {
     AboutPage
     {
         id: aboutPage
+    }
+
+    SettingsPage
+    {
+        id: settingsPage
     }
 
     ToolBarLayout {
@@ -100,6 +105,12 @@ PageStackWindow {
             {
                 text: qsTr("About")
                 onClicked: pageStack.push(aboutPage)
+            }
+
+            MenuItem
+            {
+                text: qsTr("Settings")
+                onClicked: pageStack.push(settingsPage)
             }
 
         }
