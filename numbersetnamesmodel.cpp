@@ -57,6 +57,11 @@ QVariant NumberSetNamesModel::data(const QModelIndex &index, int role) const
     return QStringListModel::data(index,role);
 }
 
+QString NumberSetNamesModel::getString(int index)
+{
+    return data(createIndex(index,0),nameRole).toString();
+}
+
 void NumberSetNamesModel::populate()
 {
 

@@ -21,6 +21,7 @@
 #include "replaceableintegerlistmodel.h"
 #include <QSettings>
 //#include <QList>
+#include <QDebug>
 
 ReplaceableIntegerListModel::ReplaceableIntegerListModel(QObject *parent) :
     QAbstractListModel(parent)
@@ -103,12 +104,16 @@ QStringList ReplaceableIntegerListModel::getSetNames()
 void ReplaceableIntegerListModel::switchToNumberSet(QString set)
 {
 
+    beginResetModel();
 
+    qDebug() << "Starting to reset the model";
     if (set == "default")
         values_ = defaultValues_;
 
     else
     {
+
+
         values_.clear();
 
         QSettings settings;
@@ -123,7 +128,13 @@ void ReplaceableIntegerListModel::switchToNumberSet(QString set)
         {
             values_.append(number.toInt());
         }
+
+
     }
+
+    endResetModel();
+
+    qDebug() << ("Finished resetting the model");
 
 
 }

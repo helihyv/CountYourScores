@@ -24,6 +24,8 @@ import countyourscores 0.1
 
 Page
 {
+    tools: commonTools
+
     property variant sets
 
     onStatusChanged:
@@ -72,6 +74,11 @@ Page
         titleText: qsTr("Choose the number list")
 
         selectedIndex: 0
+
+        onAccepted:
+        {
+            mainPage.changeNumberSet(numberSetNamesModel.getString(selectedIndex))
+        }
    }
 
 }
