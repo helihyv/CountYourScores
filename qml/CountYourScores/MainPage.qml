@@ -27,6 +27,10 @@ Page {
     property int currentPlayer: 1
     property int games: 1
 
+
+
+
+
     Row
     {
         id: players
@@ -209,6 +213,14 @@ Page {
     ReplaceableIntegerListModel
     {
         id: numbersList
+
+        onModelAboutToBeReset:
+        {
+            console.debug("Model to be reset")
+        }
+
+        onModelReset:
+            console.debug("Model has been reset")
     }
 
 
@@ -291,6 +303,8 @@ Page {
     {
         id: addedModel
 
+
+
     }
 
     ListView
@@ -352,4 +366,8 @@ Page {
 
     }
 
+    function changeNumberSet(setName)
+    {
+        numbersList.switchToNumberSet(setName)
+    }
 }

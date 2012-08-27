@@ -32,6 +32,8 @@ public:
 
     QVariant data(const QModelIndex &index, int role) const;
 
+    Q_INVOKABLE QString getString(int index);
+
 
     
 signals:
