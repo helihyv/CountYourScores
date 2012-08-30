@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  main.qml 19.8.2012
+**  main.qml 30.8.2012
 **************************************************************************/
 
 import QtQuick 1.1
@@ -37,6 +37,11 @@ PageStackWindow {
     SettingsPage
     {
         id: settingsPage
+    }
+
+    CreateNumberSetPage
+    {
+        id: createNumberSetPage
     }
 
     ToolBarLayout {
