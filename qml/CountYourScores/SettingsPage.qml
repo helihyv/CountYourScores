@@ -1,5 +1,5 @@
 /**************************************************************************
-**  MainPage.qml (of CountYourScores)
+**  SettingsPage.qml (of CountYourScores)
 **  Copyright (c) 2012 Heli Hyvättinen
 **
 **  This program is free software: you can redistribute it and/or modify
@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  MainPage 21.8.2012
+**  SettingsPage 21.8.2012
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -49,6 +49,8 @@ Page
     {
         id: selectNumberSetButton
         anchors.top: parent.top
+        anchors.topMargin: 20
+        anchors.horizontalCenter: parent.horizontalCenter
         text: qsTr("Select a number set")
 
         onClicked:
@@ -80,5 +82,23 @@ Page
             mainPage.changeNumberSet(numberSetNamesModel.getString(selectedIndex))
         }
    }
+
+
+    Button
+    {
+        id: addButton
+        text: "Add a new numberset"
+
+        anchors.top: selectNumberSetButton.bottom
+        anchors.topMargin: 50
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        onClicked:
+        {
+            pageStack.push(createNumberSetPage)
+        }
+    }
+
+
 
 }

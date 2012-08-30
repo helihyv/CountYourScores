@@ -106,7 +106,7 @@ void ReplaceableIntegerListModel::switchToNumberSet(QString set)
 
     beginResetModel();
 
-    qDebug() << "Starting to reset the model";
+//    qDebug() << "Starting to reset the model";
     if (set == "default")
         values_ = defaultValues_;
 
@@ -134,7 +134,7 @@ void ReplaceableIntegerListModel::switchToNumberSet(QString set)
 
     endResetModel();
 
-    qDebug() << ("Finished resetting the model");
+//    qDebug() << ("Finished resetting the model");
 
 
 }

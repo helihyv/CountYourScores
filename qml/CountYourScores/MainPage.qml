@@ -214,13 +214,13 @@ Page {
     {
         id: numbersList
 
-        onModelAboutToBeReset:
-        {
-            console.debug("Model to be reset")
-        }
+//        onModelAboutToBeReset:
+//        {
+//            console.debug("Model to be reset")
+//        }
 
-        onModelReset:
-            console.debug("Model has been reset")
+//        onModelReset:
+//            console.debug("Model has been reset")
     }
 
 
