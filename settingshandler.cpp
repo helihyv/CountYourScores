@@ -26,15 +26,52 @@ SettingsHandler::SettingsHandler(QObject *parent) :
 {
 }
 
-QStringList SettingsHandler::getSetNames()
+//QStringList SettingsHandler::getSetNames()
+//{
+//    QSettings settings;
+
+//    settings.beginGroup("sets"); //get only the keys for sets, not for other settings
+//    QStringList sets = settings.allKeys();
+
+//    sets.prepend("default"); //add the built-in number set
+
+//    return sets;
+
+//}
+
+void SettingsHandler::saveSet(QString name, QList<int> numbers)
 {
+
+    //convert integer list to QVariant list for saving
+
+    QList<QVariant> numbersList;
+    int number;
+
+    foreach (number,numbers)
+    {
+        numbersList.append(number);
+    }
+
+    //save the list
+
     QSettings settings;
+    settings.beginGroup("sets");
 
-    settings.beginGroup("sets"); //get only the keys for sets, not for other settings
-    QStringList sets = settings.allKeys();
+    settings.setValue(name,numbersList);
 
-    sets.prepend("default"); //add the built-in number set
+}
 
-    return sets;
+void SettingsHandler::startSet()
+{
+    numberSet_.clear();
+}
 
+void SettingsHandler::addNumbertoSet(int number)
+{
+    numberSet_.append(number);
+}
+
+void SettingsHandler::finishSet(QString name)
+{
+    saveSet(name,numberSet_);
 }
