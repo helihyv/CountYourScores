@@ -41,7 +41,7 @@ signals:
 public slots:
 
     void switchToNumberSet(QString set);
-    void saveSet(QString name, QList<int> numbers);
+
 
 protected:
 

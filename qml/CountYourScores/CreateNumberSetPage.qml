@@ -70,6 +70,8 @@ Page
         Repeater
         {
 
+        id: newNumbersRepeater
+
         model: 15
 
         TextField
@@ -85,17 +87,37 @@ Page
 
     Button
     {
-    id: saveButton
-    anchors.top: newNumbersColumn.bottom
-    anchors.topMargin: 20
-    anchors.horizontalCenter: parent.horizontalCenter
+        id: saveButton
+        anchors.top: newNumbersColumn.bottom
+        anchors.topMargin: 20
+        anchors.horizontalCenter: parent.horizontalCenter
 
-    text: qsTr("Save")
+        text: qsTr("Save")
 
-    onClicked:
+        onClicked:
+        {
+            settingsHandler.startSet()
+//            console.debug("clicked!")
+
+            for (var i = 0; i < newNumbersRepeater.count; i++)
+            {
+//                console.debug(i)
+//                console.debug(newNumbersRepeater.itemAt(i).text)
+                if (newNumbersRepeater.itemAt(i).acceptableInput)
+                {
+                    settingsHandler.addNumbertoSet(newNumbersRepeater.itemAt(i).text)
+
+                }
+            }
+            settingsHandler.finishSet(nameField.text)
+
+        }
+    }
+
+    SettingsHandler
     {
-
+        id: settingsHandler
     }
-    }
-
 }
+
+

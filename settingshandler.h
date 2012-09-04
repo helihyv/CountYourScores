@@ -29,11 +29,23 @@ class SettingsHandler : public QObject
 public:
     explicit SettingsHandler(QObject *parent = 0);
 
-        Q_INVOKABLE QStringList getSetNames();
+//        Q_INVOKABLE QStringList getSetNames();
     
 signals:
     
 public slots:
+
+        void saveSet(QString name, QList<int> numbers);
+
+        void startSet();
+
+        void addNumbertoSet(int number);
+
+        void finishSet(QString name);
+
+private:
+
+    QList<int> numberSet_;
     
 };
 

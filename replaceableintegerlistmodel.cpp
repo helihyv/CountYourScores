@@ -139,24 +139,4 @@ void ReplaceableIntegerListModel::switchToNumberSet(QString set)
 
 }
 
-void ReplaceableIntegerListModel::saveSet(QString name, QList<int> numbers)
-{
 
-    //convert integer list to QVariant list for saving
-
-    QList<QVariant> numbersList;
-    int number;
-
-    foreach (number,numbers)
-    {
-        numbersList.append(number);
-    }
-
-    //save the list
-
-    QSettings settings;
-    settings.beginGroup("sets");
-
-    settings.setValue(name,numbersList);
-
-}
