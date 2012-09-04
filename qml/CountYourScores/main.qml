@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  main.qml 30.8.2012
+**  main.qml 4.9.2012
 **************************************************************************/
 
 import QtQuick 1.1
@@ -47,6 +47,17 @@ PageStackWindow {
     ToolBarLayout {
         id: commonTools
         visible: true
+
+        ToolIcon
+        {
+            iconId: "toolbar-home"
+            visible: pageStack.depth > 2
+            onClicked:
+            {
+                pageStack.pop(null)
+            }
+        }
+
 
         ToolIcon
         {
