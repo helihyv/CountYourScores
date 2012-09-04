@@ -29,9 +29,14 @@ Page
     {
         anchors.fill: parent
 
-        text: "CountYourScores v. 0.1 \n  (c) Heli Hyvättinen 2012\nThis program is free software under the General Public License 3\n
-               The source code is available from https://github.com/helihyv/CountYourScores\n
-                Bugreports and feature requests are welcome at https://github.com/helihyv/CountYourScores/issues"
+        text: "<h2>CountYourScores v. 0.1</h2>(c) Heli Hyvättinen 2012<br>This program is free software under the General Public License 3" +
+               "<p>The source code is available from <a href=https://github.com/helihyv/CountYourScores> https://github.com/helihyv/CountYourScores</a>" +
+                "<p>Bugreports and feature requests are welcome at <a href=https://github.com/helihyv/CountYourScores/issues> https://github.com/helihyv/CountYourScores/issues</a>"
         wrapMode: Text.Wrap
+
+        onLinkActivated:
+        {
+            Qt.openUrlExternally(link)
+        }
     }
 }
