@@ -46,7 +46,7 @@ int NumberSetNamesModel::rowCount(const QModelIndex &parent) const
 
 QVariant NumberSetNamesModel::data(const QModelIndex &index, int role) const
 {
-    qDebug("Data asked");
+//    qDebug("Data asked");
 
     // give displayrole if namerole asked (QML SelectionDialog wants namerole)
     if (role == nameRole)
@@ -77,5 +77,5 @@ void NumberSetNamesModel::populate()
 
     setStringList(sets);
 
-    qDebug() << data(createIndex(0,0),nameRole).toString() ;
+//    qDebug() << data(createIndex(0,0),nameRole).toString() ;
 }
