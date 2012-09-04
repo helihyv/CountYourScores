@@ -23,7 +23,7 @@
 #include "replaceableintegerlistmodel.h"
 #include "settingshandler.h"
 #include "numbersetnamesmodel.h"
-#include "numbersetnameslist.h"
+
 //#include <QDebug>
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
