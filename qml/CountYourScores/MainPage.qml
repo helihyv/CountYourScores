@@ -278,20 +278,20 @@ Page {
                     addedView.positionViewAtEnd ()
                 }
 
-                onPressed:
-                {
-                    parent.color = "red"
-                }
+//                onPressed:
+//                {
+//                    parent.color = "red"
+//                }
 
-                onReleased:
-                {
-                    parent.color = "white"
-                }
+//                onReleased:
+//                {
+//                    parent.color = "white"
+//                }
 
-                onExited:
-                {
-                    parent.color = "white"
-                }
+//                onExited:
+//                {
+//                    parent.color = "white"
+//                }
 
 
             }
