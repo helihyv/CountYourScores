@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  AboutPage 19.8.2012
+**  AboutPage 4.9.2012
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -29,7 +29,9 @@ Page
     {
         anchors.fill: parent
 
-        text: "CountYourScores v. 0.1 \n  (c) Heli Hyvättinen 2012\nThis program is free software under the General Public License 3"
+        text: "CountYourScores v. 0.1 \n  (c) Heli Hyvättinen 2012\nThis program is free software under the General Public License 3\n
+               The source code is available from https://github.com/helihyv/CountYourScores\n
+                Bugreports and feature requests are welcome at https://github.com/helihyv/CountYourScores/issues"
         wrapMode: Text.Wrap
     }
 }
