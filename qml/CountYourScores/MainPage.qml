@@ -173,6 +173,7 @@ Page {
     {
         id: totalScores
                 anchors.verticalCenter: parent.verticalCenter
+                anchors.verticalCenterOffset: appWindow.inPortrait ? 0 : 140
 //        anchors.top: scoreView.bottom
 
         Label
