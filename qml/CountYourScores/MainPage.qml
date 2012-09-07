@@ -14,11 +14,12 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  MainPage 5.9.2012
+**  MainPage 7.9.2012
 **************************************************************************/
 
 import QtQuick 1.0
-import org.maemo.fremantle 1.0
+//import org.maemo.fremantle 1.0
+import com.nokia.meego 1.0
 import countyourscores 0.1
 
 Page {

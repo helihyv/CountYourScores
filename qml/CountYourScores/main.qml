@@ -14,11 +14,12 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  main.qml 5.9.2012
+**  main.qml 7.9.2012
 **************************************************************************/
 
 import QtQuick 1.1
-import org.maemo.fremantle 1.0
+//import org.maemo.fremantle 1.0
+import com.nokia.meego 1.0
 
 PageStackWindow {
     id: appWindow
