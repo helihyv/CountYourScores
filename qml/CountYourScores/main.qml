@@ -127,6 +127,18 @@ PageStackWindow {
         {
             MenuItem
             {
+                text: qsTr("Quit")
+                onClicked: Qt.quit()
+            }
+
+            MenuItem
+            {
+                text: qsTr("Minimize")
+                onClicked: screen.minimized = true
+            }
+
+            MenuItem
+            {
                 text: qsTr("About")
                 onClicked: pageStack.push(aboutPage)
             }
@@ -137,17 +149,6 @@ PageStackWindow {
                 onClicked: pageStack.push(settingsPage)
             }
 
-            MenuItem
-            {
-                text: qsTr("Quit")
-                onClicked: Qt.quit()
-            }
-
-            MenuItem
-            {
-                text: qsTr("Minimize")
-                onClicked: screen.minimized = true
-            }
 
         }
    }
