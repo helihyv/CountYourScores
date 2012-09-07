@@ -14,14 +14,15 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  main.qml 4.9.2012
+**  main.qml 5.9.2012
 **************************************************************************/
 
 import QtQuick 1.1
-import com.nokia.meego 1.0
+import org.maemo.fremantle 1.0
 
 PageStackWindow {
     id: appWindow
+
 
     initialPage: mainPage
 
@@ -43,6 +44,11 @@ PageStackWindow {
     {
         id: createNumberSetPage
     }
+
+    showStatusBar: false //give more room to the application itself
+    allowSwitch: false  //disables the minimize mouse area in the left corner of the screen
+    allowClose: false //disables the close mouse area in the right corner of the screen
+
 
     ToolBarLayout {
         id: commonTools
@@ -127,6 +133,16 @@ PageStackWindow {
             {
                 text: qsTr("Settings")
                 onClicked: pageStack.push(settingsPage)
+            }
+
+                text: qsTr("Quit")
+                onClicked: Qt.quit()
+            }
+
+            MenuItem
+            {
+                text: qsTr("Minimize")
+                onClicked: screen.minimized = true
             }
 
         }
