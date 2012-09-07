@@ -1,6 +1,6 @@
 The Debian Package countyourscores
 ----------------------------
 
-Comments regarding the Package
+An application for counting / keeping scores. Number pad for entering scores, adds up the given scores both for a single game and total sum. Usable e.g. in some card games. Numbers in number pad are customizable.
 
- -- Heli Hyvättinen <helihyvattinen@kymp.net>  Fri, 03 Aug 2012 16:43:13 +0300
+ -- Heli Hyvättinen <heli.hyvattinen@kymp.net>  Fri, 03 Aug 2012 16:43:13 +0300
