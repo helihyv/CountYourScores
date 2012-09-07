@@ -96,27 +96,14 @@ Page
 
         onClicked:
         {
-            settingsHandler.startSet()
-//            console.debug("clicked!")
 
-            for (var i = 0; i < newNumbersRepeater.count; i++)
+            if (settingsHandler.setNameExists(nameField.text))
             {
-//                console.debug(i)
-//                console.debug(newNumbersRepeater.itemAt(i).text)
-                if (newNumbersRepeater.itemAt(i).acceptableInput)
-                {
-                    settingsHandler.addNumbertoSet(newNumbersRepeater.itemAt(i).text)
-                    newNumbersRepeater.itemAt(i).text = "" //clear the numbers
+                confirmOverwriteDialog.open()
 
-                }
             }
-            settingsHandler.finishSet(nameField.text)
 
-            mainPage.changeNumberSet(nameField.text) //automatically take the newly created set into use
-
-            nameField.text = ""
-
-            pageStack.pop(null) //Go back to main page
+            else saveSet()
 
         }
     }
@@ -124,6 +111,50 @@ Page
     SettingsHandler
     {
         id: settingsHandler
+    }
+
+    QueryDialog
+    {
+        id: confirmOverwriteDialog
+
+        titleText: "Confirm overwrite?"
+
+        message: "A number set with the name " + nameField.text + " already exists. Do you wish to overwrite it?"
+
+        acceptButtonText: "Yes"
+
+        rejectButtonText: "No"
+
+        onAccepted:
+        {
+            saveSet()
+        }
+    }
+
+    function saveSet()
+    {
+        settingsHandler.startSet()
+//            console.debug("clicked!")
+
+        for (var i = 0; i < newNumbersRepeater.count; i++)
+        {
+//                console.debug(i)
+//                console.debug(newNumbersRepeater.itemAt(i).text)
+            if (newNumbersRepeater.itemAt(i).acceptableInput)
+            {
+                settingsHandler.addNumbertoSet(newNumbersRepeater.itemAt(i).text)
+                newNumbersRepeater.itemAt(i).text = "" //clear the numbers
+
+            }
+        }
+        settingsHandler.finishSet(nameField.text)
+
+        mainPage.changeNumberSet(nameField.text) //automatically take the newly created set into use
+
+        nameField.text = ""
+
+        pageStack.pop(null) //Go back to main page
+
     }
 }
 

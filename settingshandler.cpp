@@ -26,18 +26,17 @@ SettingsHandler::SettingsHandler(QObject *parent) :
 {
 }
 
-//QStringList SettingsHandler::getSetNames()
-//{
-//    QSettings settings;
+bool SettingsHandler::setNameExists(QString name)
+{
 
-//    settings.beginGroup("sets"); //get only the keys for sets, not for other settings
-//    QStringList sets = settings.allKeys();
+    QSettings settings;
 
-//    sets.prepend("default"); //add the built-in number set
+    settings.beginGroup("sets"); //get only the keys for sets, not for other settings
+    QStringList sets = settings.allKeys();
 
-//    return sets;
+    return sets.contains(name);
 
-//}
+}
 
 void SettingsHandler::saveSet(QString name, QList<int> numbers)
 {
