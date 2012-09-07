@@ -119,10 +119,12 @@ PageStackWindow {
         }
     }
 
-    Menu {
+    Menu
+    {
         id: myMenu
         visualParent: pageStack
-        MenuLayout {
+        MenuLayout
+        {
             MenuItem
             {
                 text: qsTr("About")
@@ -135,6 +137,8 @@ PageStackWindow {
                 onClicked: pageStack.push(settingsPage)
             }
 
+            MenuItem
+            {
                 text: qsTr("Quit")
                 onClicked: Qt.quit()
             }
@@ -146,5 +150,6 @@ PageStackWindow {
             }
 
         }
-    }
+   }
+
 }
