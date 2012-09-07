@@ -31,6 +31,7 @@ public:
 
 //        Q_INVOKABLE QStringList getSetNames();
     
+    Q_INVOKABLE bool setNameExists(QString name);
 signals:
     
 public slots:
