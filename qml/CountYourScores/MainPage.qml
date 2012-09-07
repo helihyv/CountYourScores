@@ -18,8 +18,7 @@
 **************************************************************************/
 
 import QtQuick 1.0
-//import org.maemo.fremantle 1.0
-import com.nokia.meego 1.0
+import org.maemo.fremantle 1.0
 import countyourscores 0.1
 
 Page {
@@ -256,7 +255,7 @@ Page {
             {
                 anchors.fill: parent
                 text: display
-                font.pointSize: 64
+                font.pointSize: 24
                 font.bold: true
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
