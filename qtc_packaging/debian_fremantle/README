@@ -1,6 +1,6 @@
-The Debian Package countyourscores
+The Maemo 5 Package countyourscores
 ----------------------------
 
-Comments regarding the Package
+An application for counting / keeping scores. Number pad for entering scores, adds up the given scores both for a single game and total sum. Usable e.g. in some card games. Numbers in number pad are customizable.
 
- -- Heli Hyvättinen <heli@unknown>  Sun, 05 Aug 2012 12:34:07 +0300
+ -- Heli Hyvättinen <heli.hyvattinen@kymp.net>  Sun, 05 Aug 2012 12:34:07 +0300
