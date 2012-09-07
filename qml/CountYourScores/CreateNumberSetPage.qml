@@ -97,7 +97,11 @@ Page
         onClicked:
         {
 
-            if (settingsHandler.setNameExists(nameField.text))
+            if (nameField.text == "default")
+            {
+                defaultNotAllowedInformationDialog.open()
+            }
+            else if (settingsHandler.setNameExists(nameField.text))
             {
                 confirmOverwriteDialog.open()
 
@@ -129,6 +133,17 @@ Page
         {
             saveSet()
         }
+    }
+
+    QueryDialog
+    {
+        id: defaultNotAllowedInformationDialog
+
+        titleText: "Cannot use the name \"default\""
+
+        message: "The default numberset cannot be changed. Use another name."
+
+        acceptButtonText: "OK"
     }
 
     function saveSet()
