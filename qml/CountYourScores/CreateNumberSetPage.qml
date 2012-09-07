@@ -106,10 +106,17 @@ Page
                 if (newNumbersRepeater.itemAt(i).acceptableInput)
                 {
                     settingsHandler.addNumbertoSet(newNumbersRepeater.itemAt(i).text)
+                    newNumbersRepeater.itemAt(i).text = "" //clear the numbers
 
                 }
             }
             settingsHandler.finishSet(nameField.text)
+
+            mainPage.changeNumberSet(nameField.text) //automatically take the newly created set into use
+
+            nameField.text = ""
+
+            pageStack.pop(null) //Go back to main page
 
         }
     }
