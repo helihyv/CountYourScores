@@ -1,3 +1,10 @@
+countyourscores (0.1.1) unstable; urgency=low
+
+  * Correct package manager icon
+
+ -- Heli Hyvättinen <heli.hyvattinen@kymp.net>  Fri, 03 Aug 2012 16:43:13 +0300
+
+
 countyourscores (0.1.0) unstable; urgency=low
 
   * Initial Release.
