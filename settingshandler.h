@@ -35,6 +35,8 @@ public:
 
     Q_INVOKABLE bool isBlackThemeOn();
 
+    Q_INVOKABLE QString currentSet();
+
 signals:
     
 public slots:
@@ -48,6 +50,8 @@ public slots:
         void finishSet(QString name);
 
         void setBlackTheme(bool on);
+
+        void saveCurrentSet(QString setName);
 
 private:
 

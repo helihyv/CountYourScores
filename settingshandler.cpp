@@ -45,6 +45,13 @@ bool SettingsHandler::isBlackThemeOn()
     return settings.value("BlackThemeOn", false).toBool(); //defaults to white theme if no user setting
 }
 
+QString SettingsHandler::currentSet()
+{
+    QSettings settings;
+
+    return settings.value("CurrentSet","default").toString();
+}
+
 void SettingsHandler::saveSet(QString name, QList<int> numbers)
 {
 
@@ -87,4 +94,11 @@ void SettingsHandler::setBlackTheme(bool on)
     QSettings settings;
 
     settings.setValue("BlackThemeOn", on);
+}
+
+void SettingsHandler::saveCurrentSet(QString setName)
+{
+    QSettings settings;
+
+    settings.setValue("CurrentSet,setName");
 }

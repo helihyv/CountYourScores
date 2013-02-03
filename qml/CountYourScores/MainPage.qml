@@ -330,6 +330,11 @@ Page {
 
     }
 
+    SettingsHandler
+    {
+        id: settingsHandler
+    }
+
     function clearScores()
     {
         scoresModel.clear()
@@ -373,4 +378,6 @@ Page {
     {
         numbersList.switchToNumberSet(setName)
     }
+
+
 }
