@@ -101,4 +101,22 @@ Page
 
 
 
+        Label
+        {
+            id: themeSwitchLabel
+            text: "Black Theme "
+            font.bold: true
+            anchors.top: addButton.bottom
+            anchors.topMargin: 50
+            anchors.left: addButton.left
+        }
+        Switch
+        {
+            id: themeSwitch
+            anchors.top: addButton.bottom
+            anchors.topMargin: 50
+            anchors.right: addButton.right
+        }
+
+
 }
