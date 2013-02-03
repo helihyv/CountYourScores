@@ -116,6 +116,11 @@ Page
             anchors.top: addButton.bottom
             anchors.topMargin: 50
             anchors.right: addButton.right
+
+            onCheckedChanged:
+            {
+                theme.inverted = checked
+            }
         }
 
 
