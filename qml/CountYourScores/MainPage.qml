@@ -51,7 +51,7 @@ Page {
                 width: 95
                 height: 50
                 text: "Player" + (index+1)
-                color: (index+1 == currentPlayer) ? "red" : "black"
+                color: (index+1 == currentPlayer) ? "red" : platformStyle.textColor
 
                 MouseArea
                 {
@@ -151,7 +151,7 @@ Page {
                 width: 100
                 text: score
 
-                color: (index % 4) +1 == currentPlayer ? "red" : "black"
+                color: (index % 4) +1 == currentPlayer ? "red" : platformStyle.textColor
 
                 MouseArea
                 {
@@ -194,7 +194,7 @@ Page {
                 width: 95
                 text: totalScore
 
-                color: (index+1 == currentPlayer) ? "red" : "black"
+                color: (index+1 == currentPlayer) ? "red" : platformStyle.textColor
 
                 MouseArea
                 {
@@ -250,6 +250,8 @@ Page {
             width: 95
             height:95
             border.width: 1
+            color: theme.inverted ? "black" : "white"
+            border.color: theme.inverted ? "white" : "black"
 
             Label
             {

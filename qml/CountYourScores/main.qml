@@ -26,6 +26,8 @@ PageStackWindow {
 
     initialPage: mainPage
 
+    Component.onCompleted: theme.inverted = true
+
     MainPage {
         id: mainPage
     }
