@@ -32,6 +32,9 @@ public:
 //        Q_INVOKABLE QStringList getSetNames();
     
     Q_INVOKABLE bool setNameExists(QString name);
+
+    Q_INVOKABLE bool isBlackThemeOn();
+
 signals:
     
 public slots:
@@ -43,6 +46,8 @@ public slots:
         void addNumbertoSet(int number);
 
         void finishSet(QString name);
+
+        void setBlackTheme(bool on);
 
 private:
 
