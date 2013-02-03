@@ -19,14 +19,13 @@
 
 import QtQuick 1.1
 import org.maemo.fremantle 1.0
+import countyourscores 0.1
 
 PageStackWindow {
     id: appWindow
 
 
     initialPage: mainPage
-
-//    Component.onCompleted: theme.inverted = true
 
     MainPage {
         id: mainPage
@@ -155,4 +154,17 @@ PageStackWindow {
         }
    }
 
+    SettingsHandler
+    {
+        id: settingsHandler
+    }
+
+    Component.onCompleted:
+    {
+
+        theme.inverted = settingsHandler.isBlackThemeOn()
+    }
 }
+
+
+

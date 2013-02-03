@@ -117,11 +117,22 @@ Page
             anchors.topMargin: 50
             anchors.right: addButton.right
 
+            Component.onCompleted:
+            {
+                checked = settingsHandler.isBlackThemeOn()
+            }
+
             onCheckedChanged:
             {
                 theme.inverted = checked
+                settingsHandler.setBlackTheme(checked)
             }
         }
 
+
+    SettingsHandler
+    {
+        id: settingsHandler
+    }
 
 }
