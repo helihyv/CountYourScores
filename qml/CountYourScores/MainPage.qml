@@ -26,7 +26,7 @@ Page {
 
     property int currentPlayer: 1
     property int games: 1
-    property string highlightColor : theme.inverted ? "red" : "green"
+    property string highlightColor : theme.inverted ? "fuchsia" : "firebrick"
 
 
 
