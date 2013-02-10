@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  MainPage 7.9.2012
+**  MainPage 10.2.2013
 **************************************************************************/
 
 import QtQuick 1.0
@@ -26,6 +26,7 @@ Page {
 
     property int currentPlayer: 1
     property int games: 1
+    property string highlightColor : theme.inverted ? "red" : "green"
 
 
 
@@ -51,7 +52,7 @@ Page {
                 width: 95
                 height: 50
                 text: "Player" + (index+1)
-                color: (index+1 == currentPlayer) ? "red" : platformStyle.textColor
+                color: (index+1 == currentPlayer) ? highlightColor : platformStyle.textColor
 
                 MouseArea
                 {
@@ -93,11 +94,7 @@ Page {
     }
 
 
-//    Row
-//    {
-//        id: scores
-//        anchors.top: players.bottom
-//        spacing: 40
+
 
 
         Column
@@ -105,7 +102,6 @@ Page {
             id: gameTexts
             anchors.top: players.bottom
             anchors.left: parent.left
-//            anchors.right: parent.right
             anchors.bottom: totalScores.top
 
 
@@ -123,14 +119,9 @@ Page {
 
         }
 
-//        Rectangle
-//        {
-//            anchors.top: players.bottom
-//            anchors.left: parent.left
-//            anchors.right: parent.right
+
         GridView
         {
-//              anchors.fill: parent
 
             anchors.top: players.bottom
             anchors.left: gameTexts.right
@@ -151,7 +142,7 @@ Page {
                 width: 100
                 text: score
 
-                color: (index % 4) +1 == currentPlayer ? "red" : platformStyle.textColor
+                color: (index % 4) +1 == currentPlayer ? highlightColor : platformStyle.textColor
 
                 MouseArea
                 {
@@ -166,15 +157,14 @@ Page {
             }
 
         }
-//        }
-//    }
+
 
     Row
     {
         id: totalScores
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.verticalCenterOffset: appWindow.inPortrait ? 0 : 140
-//        anchors.top: scoreView.bottom
+
 
         Label
         {
@@ -194,7 +184,7 @@ Page {
                 width: 95
                 text: totalScore
 
-                color: (index+1 == currentPlayer) ? "red" : platformStyle.textColor
+                color: (index+1 == currentPlayer) ? highlightColor : platformStyle.textColor
 
                 MouseArea
                 {
@@ -285,22 +275,6 @@ Page {
                     addedModel.append({"number" : display})
                     addedView.positionViewAtEnd ()
                 }
-
-//                onPressed:
-//                {
-//                    parent.color = "red"
-//                }
-
-//                onReleased:
-//                {
-//                    parent.color = "white"
-//                }
-
-//                onExited:
-//                {
-//                    parent.color = "white"
-//                }
-
 
             }
 
