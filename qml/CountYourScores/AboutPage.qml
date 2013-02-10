@@ -31,7 +31,7 @@ Page
 
         text: "<h2>CountYourScores v. 0.1.1</h2>(c) Heli Hyvättinen 2012­ - 2013<br>This program is free software under the General Public License 3" +
                              "<p>The source code is available from <a href=https://github.com/helihyv/CountYourScores> https://github.com/helihyv/CountYourScores</a>" +
-              "<p> You can find instructions of use on <a href=http://helihyv.github.com/CountYourScores/> http://helihyv.github.com/CountYourScores/</a>"+
+              "<p> You can find instructions of use on <a href=http://helihyv.github.com/CountYourScores/ > http://helihyv.github.com/CountYourScores/</a>"+
                 "<p>Bugreports and feature requests are welcome at <a href=https://github.com/helihyv/CountYourScores/issues> https://github.com/helihyv/CountYourScores/issues</a>"
         wrapMode: Text.Wrap
 
