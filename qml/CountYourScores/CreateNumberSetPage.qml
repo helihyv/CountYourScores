@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  CreateNumberSetPage 7.9.2012
+**  CreateNumberSetPage 10.2.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -26,15 +26,27 @@ Page
 {
     tools: commonTools
 
+    property bool editing : false
+
+
+    onStatusChanged:
+    {
+
+        if (status == PageStatus.Activating)
+        {
+            if (editing == true)
+            {
+//                nameField.text =
+            }
+        }
+
+    }
+
     Column
     {
         id: nameColumn
         anchors.horizontalCenter: parent.horizontalCenter
 
-//        Label
-//        {
-//            text: "Name of the number set:"
-//        }
 
         TextField
         {
@@ -45,15 +57,7 @@ Page
         }
     }
 
-//    Label
-//    {
-//        anchors.top: nameColumn.bottom
-//        anchors.topMargin: 30
-//        anchors.horizontalCenter: parent.horizontalCenter
 
-//        id: numbersHeading
-//        text: "Numbers in pad:"
-//    }
 
     Grid
     {
@@ -63,8 +67,7 @@ Page
         anchors.topMargin: 20
         anchors.horizontalCenter: parent.horizontalCenter
 
-//        anchors.left: parent.left
-//        anchors.right: parent.right
+
         columns: appWindow.inPortrait ? 2 : 4
 
         Repeater
