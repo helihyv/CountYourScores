@@ -245,7 +245,7 @@ Page {
             width: 95
             height:95
             border.width: 1
-            color: theme.inverted ? "black" : "white"
+            color: theme.inverted ? "#1F1F1F" : "white"
             border.color: theme.inverted ? "white" : "black"
 
             Label
