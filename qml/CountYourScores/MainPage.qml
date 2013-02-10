@@ -222,6 +222,11 @@ Page {
 
 //        onModelReset:
 //            console.debug("Model has been reset")
+
+        Component.onCompleted:
+        {
+            changeNumberSet( settingsHandler.currentSet() )
+        }
     }
 
 
@@ -305,8 +310,6 @@ Page {
     ListModel
     {
         id: addedModel
-
-
 
     }
 

@@ -80,6 +80,7 @@ Page
         onAccepted:
         {
             mainPage.changeNumberSet(numberSetNamesModel.getString(selectedIndex))
+            settingsHandler.saveCurrentSet(numberSetNamesModel.getString(selectedIndex))
         }
    }
 

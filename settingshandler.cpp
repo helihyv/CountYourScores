@@ -100,5 +100,5 @@ void SettingsHandler::saveCurrentSet(QString setName)
 {
     QSettings settings;
 
-    settings.setValue("CurrentSet,setName");
+    settings.setValue("CurrentSet",setName);
 }
