@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  NumberSetNamesModel 21.8.2012
+**  NumberSetNamesModel 10.2.2013
 **************************************************************************/
 
 #include "numbersetnamesmodel.h"
@@ -60,6 +60,18 @@ QVariant NumberSetNamesModel::data(const QModelIndex &index, int role) const
 QString NumberSetNamesModel::getString(int index)
 {
     return data(createIndex(index,0),nameRole).toString();
+}
+
+int NumberSetNamesModel::indexOfCurrentSet()
+{
+    QSettings settings;
+
+
+    qDebug() << stringList().indexOf(settings.value("CurrentSet","default").toString()) << "Visited indexofcurrentset";
+
+    return stringList().indexOf(settings.value("CurrentSet","default").toString());
+    //returns -1 if not found, which should never happen unless the conf file has been messed up by hand-editing
+    //-1 is the value for "nothing selected" in QML SelectionDialog, so this behaviour OK
 }
 
 void NumberSetNamesModel::populate()

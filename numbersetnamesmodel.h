@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  NumberSetNamesModel 21.8.2012
+**  NumberSetNamesModel 10.2.2013
 **************************************************************************/
 
 #ifndef NUMBERSETNAMESMODEL_H
@@ -34,13 +34,15 @@ public:
 
     Q_INVOKABLE QString getString(int index);
 
-
+    Q_INVOKABLE int indexOfCurrentSet();
     
 signals:
     
 public slots:
 
     void populate();
+
+
     
 };
 

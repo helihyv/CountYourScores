@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsPage 21.8.2012
+**  SettingsPage 10.2.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -40,6 +40,8 @@ Page
 
             numberSetNamesModel.populate()
             numberSetNamesModel.count = numberSetNamesModel.rowCount()
+
+            numberSetDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet()
         }
 
     }
@@ -75,7 +77,6 @@ Page
 
         titleText: qsTr("Choose the number list")
 
-        selectedIndex: 0
 
         onAccepted:
         {
