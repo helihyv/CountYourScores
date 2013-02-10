@@ -97,6 +97,24 @@ Page
 
         onClicked:
         {
+            createNumberSetPage.editing = false
+            pageStack.push(createNumberSetPage)
+        }
+    }
+
+
+    Button
+    {
+        id: editButton
+        text: "Edit current numberset"
+
+        anchors.top: addButton
+        anchors.topMargin: 50
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        onClicked:
+        {
+            createNumberSetPage.editing = true
             pageStack.push(createNumberSetPage)
         }
     }
@@ -108,16 +126,16 @@ Page
             id: themeSwitchLabel
             text: "Black Theme "
             font.bold: true
-            anchors.top: addButton.bottom
+            anchors.top: editButton.bottom
             anchors.topMargin: 50
-            anchors.left: addButton.left
+            anchors.left: editButton.left
         }
         Switch
         {
             id: themeSwitch
-            anchors.top: addButton.bottom
+            anchors.top: editButton.bottom
             anchors.topMargin: 50
-            anchors.right: addButton.right
+            anchors.right: editButton.right
 
             Component.onCompleted:
             {
