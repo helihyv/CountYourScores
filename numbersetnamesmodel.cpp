@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  NumberSetNamesModel 21.8.2012
+**  NumberSetNamesModel 21.2.2013
 **************************************************************************/
 
 #include "numbersetnamesmodel.h"
@@ -62,7 +62,7 @@ QString NumberSetNamesModel::getString(int index)
     return data(createIndex(index,0),nameRole).toString();
 }
 
-void NumberSetNamesModel::populate()
+void NumberSetNamesModel::populate(bool includeDefault)
 {
 
     //populate the model
@@ -72,8 +72,11 @@ void NumberSetNamesModel::populate()
     settings.beginGroup("sets"); //get only the keys for sets, not for other settings
     QStringList sets = settings.allKeys();
 
-    sets.prepend("default"); //add the built-in number set
-    sets.append("Testing!!!");
+    if (includeDefault)
+    {
+        sets.prepend("default"); //add the built-in number set
+    }
+//    sets.append("Testing!!!");
 
     setStringList(sets);
 
