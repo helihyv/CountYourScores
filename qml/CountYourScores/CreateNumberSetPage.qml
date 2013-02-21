@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  CreateNumberSetPage 10.2.2013
+**  CreateNumberSetPage 21.2.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -27,6 +27,8 @@ Page
     tools: commonTools
 
     property bool editing : false
+
+    property string numbersetToEdit
 
 
     onStatusChanged:

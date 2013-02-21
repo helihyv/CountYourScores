@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsPage 10.2.2013
+**  SettingsPage 21.2.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -35,13 +35,17 @@ Page
         {
             //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
 
-            numberSetNamesModel.populate()
+            numberSetNamesModel.populate(true)
             numberSetNamesModel.count = numberSetNamesModel.rowCount()
 
-            numberSetNamesModel.populate()
+            numberSetNamesModel.populate(true)
             numberSetNamesModel.count = numberSetNamesModel.rowCount()
 
             numberSetDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet()
+
+            selectSetToBeEditedModel.populate(false) //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
+            selectSetToBeEditedModel.count = selectSetToBeEditedModel.rowCount()
+
         }
 
     }
@@ -75,7 +79,7 @@ Page
 
         model: numberSetNamesModel
 
-        titleText: qsTr("Choose the number list")
+        titleText: qsTr("Choose the list to use")
 
 
         onAccepted:
@@ -89,7 +93,7 @@ Page
     Button
     {
         id: addButton
-        text: "Add a new numberset"
+        text: qsTr("Add a new numberset")
 
         anchors.top: selectNumberSetButton.bottom
         anchors.topMargin: 50
@@ -103,28 +107,57 @@ Page
     }
 
 
+
     Button
     {
         id: editButton
-        text: "Edit current numberset"
+        text: qsTr("Edit a numberset")
 
-        anchors.top: addButton
+        anchors.top: addButton.bottom
         anchors.topMargin: 50
         anchors.horizontalCenter: parent.horizontalCenter
 
         onClicked:
         {
+            selectSetToBeEditedModel.populate(false)
+            selectSetToBeEditedModel.count = selectSetToBeEditedModel.rowCount()
+
+            selectSetToBeEditedDialog.open()
+
+
+
+        }
+    }
+
+
+    NumberSetNamesModel
+    {
+        id: selectSetToBeEditedModel
+        property int count: 0
+    }
+
+    SelectionDialog
+    {
+        id: selectSetToBeEditedDialog
+        model: selectSetToBeEditedModel
+
+        titleText: qsTr("Choose the list to edit")
+
+        onAccepted:
+        {
             createNumberSetPage.editing = true
+            createNumberSetPage.numbersetToEdit = selectSetToBeEditedModel.getString(selectedIndex)
             pageStack.push(createNumberSetPage)
         }
     }
 
 
 
+
         Label
         {
             id: themeSwitchLabel
-            text: "Black Theme "
+            text: qsTr("Black Theme ")
             font.bold: true
             anchors.top: editButton.bottom
             anchors.topMargin: 50

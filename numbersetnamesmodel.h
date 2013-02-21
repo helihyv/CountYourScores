@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  NumberSetNamesModel 10.2.2013
+**  NumberSetNamesModel 21.2.2013
 **************************************************************************/
 
 #ifndef NUMBERSETNAMESMODEL_H
@@ -40,7 +40,7 @@ signals:
     
 public slots:
 
-    void populate();
+    void populate(bool includeDefault);
 
 
     
