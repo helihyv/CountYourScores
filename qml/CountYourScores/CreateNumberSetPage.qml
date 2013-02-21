@@ -36,11 +36,44 @@ Page
 
         if (status == PageStatus.Activating)
         {
+
+            //Clear previous data
+            for (var i = 0; i < 15; i++)
+            {
+                newNumbersRepeater.itemAt(i).text = ""
+            }
+
+
+            //Get the edited set
             if (editing == true)
             {
-//                nameField.text =
+                editedModel.switchToNumberSet(numbersetToEdit)
+
+
+
+                for (var i = 0; i < editedModel.rowCount() && i < 15; i++)
+                {
+                    newNumbersRepeater.itemAt(i).text = editedModel.getValueAt(i)
+                }
+
+                nameField.text = numbersetToEdit
+
+            }
+
+            //Clear the name field for a new set
+            else
+            {
+                nameField.text = ""
             }
         }
+
+    }
+
+    ReplaceableIntegerListModel
+    {
+        id: editedModel
+//        property int count: 0
+
 
     }
 
@@ -86,6 +119,8 @@ Page
                 placeholderText: "Number " + (index +1)
                 width: 200
             }
+
+
         }
 
     }

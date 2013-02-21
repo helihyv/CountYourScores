@@ -101,6 +101,13 @@ QStringList ReplaceableIntegerListModel::getSetNames()
 
 }
 
+int ReplaceableIntegerListModel::getValueAt(int simpleIndex)
+{
+    return data(index(simpleIndex),Qt::DisplayRole).toInt(); //overcomplex, but independent of the internal implementation of the model
+}
+
+
+
 void ReplaceableIntegerListModel::switchToNumberSet(QString set)
 {
 
