@@ -46,6 +46,9 @@ Page
             selectSetToBeEditedModel.populate(false) //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
             selectSetToBeEditedModel.count = selectSetToBeEditedModel.rowCount()
 
+            selectSetToBeDeletedModel.populate(false) //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
+            selectSetToBeDeletedModel.count = selectSetToBeEditedModel.rowCount()
+
         }
 
     }
@@ -79,7 +82,7 @@ Page
 
         model: numberSetNamesModel
 
-        titleText: qsTr("Choose the list to use")
+        titleText: qsTr("Choose the set to use")
 
 
         onAccepted:
@@ -141,7 +144,7 @@ Page
         id: selectSetToBeEditedDialog
         model: selectSetToBeEditedModel
 
-        titleText: qsTr("Choose the list to edit")
+        titleText: qsTr("Choose the set to edit")
 
         onAccepted:
         {
@@ -151,7 +154,60 @@ Page
         }
     }
 
+    Button
+    {
+        id: deleteButton
+        text: qsTr("Delete a numberset")
 
+        anchors.top: editButton.bottom
+        anchors.topMargin: 50
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        onClicked:
+        {
+            selectSetToBeDeletedModel.populate(false)
+            selectSetToBeDeletedModel.count = selectSetToBeDeletedModel.rowCount
+
+            selectSetToBeDeletedDialog.open()
+        }
+    }
+
+    NumberSetNamesModel
+    {
+        id: selectSetToBeDeletedModel
+        property int count: 0
+    }
+
+    SelectionDialog
+    {
+        id: selectSetToBeDeletedDialog
+        model: selectSetToBeDeletedModel
+
+        titleText: qsTr("Choose the set to delete")
+
+        onAccepted:
+        {
+            confirmDeleteSetDialog.open()
+        }
+    }
+
+    QueryDialog
+    {
+        id: confirmDeleteSetDialog
+
+        titleText: "Confirm delete set"
+
+        message: "Do you really wish to delete the number set " + selectSetToBeDeletedModel.getString(selectSetToBeDeletedDialog.selectedIndex) +"?"
+
+        acceptButtonText: "Yes"
+
+        rejectButtonText: "No"
+
+        onAccepted:
+        {
+             settingsHandler.removeSet(selectSetToBeDeletedModel.getString(selectSetToBeDeletedDialog.selectedIndex))
+        }
+    }
 
 
         Label
@@ -159,16 +215,16 @@ Page
             id: themeSwitchLabel
             text: qsTr("Black Theme ")
             font.bold: true
-            anchors.top: editButton.bottom
+            anchors.top: deleteButton.bottom
             anchors.topMargin: 50
-            anchors.left: editButton.left
+            anchors.left: deleteButton.left
         }
         Switch
         {
             id: themeSwitch
-            anchors.top: editButton.bottom
+            anchors.top: deleteButton.bottom
             anchors.topMargin: 50
-            anchors.right: editButton.right
+            anchors.right: deleteButton.right
 
             Component.onCompleted:
             {

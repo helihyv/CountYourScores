@@ -53,6 +53,8 @@ public slots:
 
         void saveCurrentSet(QString setName);
 
+        void removeSet(QString name);
+
 private:
 
     QList<int> numberSet_;
