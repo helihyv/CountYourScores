@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsPage 21.2.2013
+**  SettingsPage 22.2.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -59,7 +59,8 @@ Page
         id: selectNumberSetButton
         anchors.top: parent.top
         anchors.topMargin: 20
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenter:  parent.horizontalCenter
+        anchors.horizontalCenterOffset: appWindow.inPortrait ? 0 : -100
         text: qsTr("Select a number set")
 
         onClicked:
@@ -100,7 +101,7 @@ Page
 
         anchors.top: selectNumberSetButton.bottom
         anchors.topMargin: 50
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenter: selectNumberSetButton.horizontalCenter
 
         onClicked:
         {
@@ -118,7 +119,7 @@ Page
 
         anchors.top: addButton.bottom
         anchors.topMargin: 50
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenter: addButton.horizontalCenter
 
         onClicked:
         {
@@ -161,7 +162,7 @@ Page
 
         anchors.top: editButton.bottom
         anchors.topMargin: 50
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenter: editButton.horizontalCenter
 
         onClicked:
         {
@@ -215,16 +216,16 @@ Page
             id: themeSwitchLabel
             text: qsTr("Black Theme ")
             font.bold: true
-            anchors.top: deleteButton.bottom
-            anchors.topMargin: 50
-            anchors.left: deleteButton.left
+            anchors.top: appWindow.inPortrait ? deleteButton.bottom : parent.top
+            anchors.topMargin: appWindow.inPortrait ? 50 : 50
+            anchors.left: appWindow.inPortrait ? deleteButton.left : selectNumberSetButton.right
         }
         Switch
         {
             id: themeSwitch
-            anchors.top: deleteButton.bottom
-            anchors.topMargin: 50
-            anchors.right: deleteButton.right
+            anchors.verticalCenter: themeSwitchLabel.verticalCenter
+//            anchors.topMargin: 50
+            anchors.right: appWindow.inPortrait ? deleteButton.right : parent.right
 
             Component.onCompleted:
             {
