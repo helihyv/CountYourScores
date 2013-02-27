@@ -106,9 +106,7 @@ PageStackWindow {
             visible: pageStack.currentPage == mainPage ? true : false
             onClicked:
             {
-                mainPage.clearScores()
-                addGameIcon.enabled = true
-                addGameIcon.platformIconId = "toolbar-next"
+                confirmClearQuery.open()
 
             }
         }
@@ -120,8 +118,23 @@ PageStackWindow {
         }
     }
 
-    Menu
+    QueryDialog
     {
+        id: confirmClearQuery
+        titleText: "Clear all scores?"
+        acceptButtonText: "OK"
+        rejectButtonText: "Cancel"
+
+        onAccepted:
+        {
+            mainPage.clearScores()
+            addGameIcon.enabled = true
+            addGameIcon.platformIconId = "toolbar-next"
+        }
+
+    }
+
+    Menu {
         id: myMenu
         visualParent: pageStack
         MenuLayout
@@ -154,6 +167,8 @@ PageStackWindow {
         }
    }
 
+
+
     SettingsHandler
     {
         id: settingsHandler
@@ -164,6 +179,8 @@ PageStackWindow {
 
         theme.inverted = settingsHandler.isBlackThemeOn()
     }
+
+
 }
 
 
