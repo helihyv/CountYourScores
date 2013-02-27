@@ -58,7 +58,7 @@ Page
         anchors.top: parent.top
         anchors.topMargin: 20
         anchors.horizontalCenter:  parent.horizontalCenter
-        anchors.horizontalCenterOffset: appWindow.inPortrait ? 0 : -100
+        anchors.horizontalCenterOffset: appWindow.inPortrait ? 0 : -200
         text: qsTr("Select a number set")
 
         onClicked:
@@ -216,8 +216,9 @@ Page
             text: qsTr("Black Theme ")
             font.bold: true
             anchors.top: appWindow.inPortrait ? deleteButton.bottom : parent.top
-            anchors.topMargin: appWindow.inPortrait ? 50 : 50
+            anchors.topMargin: appWindow.inPortrait ? 50 : 30
             anchors.left: appWindow.inPortrait ? deleteButton.left : selectNumberSetButton.right
+            anchors.leftMargin: appWindow.inPortrait ? 0 : 75
         }
         Switch
         {
@@ -225,6 +226,7 @@ Page
             anchors.verticalCenter: themeSwitchLabel.verticalCenter
 //            anchors.topMargin: 50
             anchors.right: appWindow.inPortrait ? deleteButton.right : parent.right
+            anchors.rightMargin: appWindow.inPortrait ? 0 : 75
 
             Component.onCompleted:
             {
