@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsPage 10.2.2013
+**  SettingsPage 22.2.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -35,13 +35,20 @@ Page
         {
             //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
 
-            numberSetNamesModel.populate()
+            numberSetNamesModel.populate(true)
             numberSetNamesModel.count = numberSetNamesModel.rowCount()
 
-            numberSetNamesModel.populate()
+            numberSetNamesModel.populate(true)
             numberSetNamesModel.count = numberSetNamesModel.rowCount()
 
             numberSetDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet()
+
+            selectSetToBeEditedModel.populate(false) //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
+            selectSetToBeEditedModel.count = selectSetToBeEditedModel.rowCount()
+
+            selectSetToBeDeletedModel.populate(false) //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
+            selectSetToBeDeletedModel.count = selectSetToBeEditedModel.rowCount()
+
         }
 
     }
@@ -52,7 +59,8 @@ Page
         id: selectNumberSetButton
         anchors.top: parent.top
         anchors.topMargin: 20
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenter:  parent.horizontalCenter
+        anchors.horizontalCenterOffset: appWindow.inPortrait ? 0 : -200
         text: qsTr("Select a number set")
 
         onClicked:
@@ -75,7 +83,7 @@ Page
 
         model: numberSetNamesModel
 
-        titleText: qsTr("Choose the number list")
+        titleText: qsTr("Choose the set to use")
 
 
         onAccepted:
@@ -89,35 +97,137 @@ Page
     Button
     {
         id: addButton
-        text: "Add a new numberset"
+        text: qsTr("Add a new numberset")
 
         anchors.top: selectNumberSetButton.bottom
         anchors.topMargin: 50
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenter: selectNumberSetButton.horizontalCenter
 
         onClicked:
         {
+            createNumberSetPage.editing = false
             pageStack.push(createNumberSetPage)
         }
     }
 
 
 
+    Button
+    {
+        id: editButton
+        text: qsTr("Edit a numberset")
+
+        anchors.top: addButton.bottom
+        anchors.topMargin: 50
+        anchors.horizontalCenter: addButton.horizontalCenter
+
+        onClicked:
+        {
+            selectSetToBeEditedModel.populate(false)
+            selectSetToBeEditedModel.count = selectSetToBeEditedModel.rowCount()
+
+            selectSetToBeEditedDialog.open()
+
+
+
+        }
+    }
+
+
+    NumberSetNamesModel
+    {
+        id: selectSetToBeEditedModel
+        property int count: 0
+    }
+
+    SelectionDialog
+    {
+        id: selectSetToBeEditedDialog
+        model: selectSetToBeEditedModel
+
+        titleText: qsTr("Choose the set to edit")
+
+        onAccepted:
+        {
+            createNumberSetPage.editing = true
+            createNumberSetPage.numbersetToEdit = selectSetToBeEditedModel.getString(selectedIndex)
+            pageStack.push(createNumberSetPage)
+        }
+    }
+
+    Button
+    {
+        id: deleteButton
+        text: qsTr("Delete a numberset")
+
+        anchors.top: editButton.bottom
+        anchors.topMargin: 50
+        anchors.horizontalCenter: editButton.horizontalCenter
+
+        onClicked:
+        {
+            selectSetToBeDeletedModel.populate(false)
+            selectSetToBeDeletedModel.count = selectSetToBeDeletedModel.rowCount
+
+            selectSetToBeDeletedDialog.open()
+        }
+    }
+
+    NumberSetNamesModel
+    {
+        id: selectSetToBeDeletedModel
+        property int count: 0
+    }
+
+    SelectionDialog
+    {
+        id: selectSetToBeDeletedDialog
+        model: selectSetToBeDeletedModel
+
+        titleText: qsTr("Choose the set to delete")
+
+        onAccepted:
+        {
+            confirmDeleteSetDialog.open()
+        }
+    }
+
+    QueryDialog
+    {
+        id: confirmDeleteSetDialog
+
+        titleText: "Confirm delete set"
+
+        message: "Do you really wish to delete the number set " + selectSetToBeDeletedModel.getString(selectSetToBeDeletedDialog.selectedIndex) +"?"
+
+        acceptButtonText: "Yes"
+
+        rejectButtonText: "No"
+
+        onAccepted:
+        {
+             settingsHandler.removeSet(selectSetToBeDeletedModel.getString(selectSetToBeDeletedDialog.selectedIndex))
+        }
+    }
+
+
         Label
         {
             id: themeSwitchLabel
-            text: "Black Theme "
+            text: qsTr("Black Theme ")
             font.bold: true
-            anchors.top: addButton.bottom
-            anchors.topMargin: 50
-            anchors.left: addButton.left
+            anchors.top: appWindow.inPortrait ? deleteButton.bottom : parent.top
+            anchors.topMargin: appWindow.inPortrait ? 50 : 30
+            anchors.left: appWindow.inPortrait ? deleteButton.left : selectNumberSetButton.right
+            anchors.leftMargin: appWindow.inPortrait ? 0 : 75
         }
         Switch
         {
             id: themeSwitch
-            anchors.top: addButton.bottom
-            anchors.topMargin: 50
-            anchors.right: addButton.right
+            anchors.verticalCenter: themeSwitchLabel.verticalCenter
+//            anchors.topMargin: 50
+            anchors.right: appWindow.inPortrait ? deleteButton.right : parent.right
+            anchors.rightMargin: appWindow.inPortrait ? 0 : 75
 
             Component.onCompleted:
             {

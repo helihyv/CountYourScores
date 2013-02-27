@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  NumberSetNamesModel 10.2.2013
+**  NumberSetNamesModel 21.2.2013
 **************************************************************************/
 
 #include "numbersetnamesmodel.h"
@@ -74,7 +74,7 @@ int NumberSetNamesModel::indexOfCurrentSet()
     //-1 is the value for "nothing selected" in QML SelectionDialog, so this behaviour OK
 }
 
-void NumberSetNamesModel::populate()
+void NumberSetNamesModel::populate(bool includeDefault)
 {
 
     //populate the model
@@ -84,8 +84,11 @@ void NumberSetNamesModel::populate()
     settings.beginGroup("sets"); //get only the keys for sets, not for other settings
     QStringList sets = settings.allKeys();
 
-    sets.prepend("default"); //add the built-in number set
-    sets.append("Testing!!!");
+    if (includeDefault)
+    {
+        sets.prepend("default"); //add the built-in number set
+    }
+//    sets.append("Testing!!!");
 
     setStringList(sets);
 

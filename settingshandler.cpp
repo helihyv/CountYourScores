@@ -102,3 +102,14 @@ void SettingsHandler::saveCurrentSet(QString setName)
 
     settings.setValue("CurrentSet",setName);
 }
+
+void SettingsHandler::removeSet(QString name)
+{
+    QSettings settings;
+
+    settings.beginGroup("sets");
+
+    settings.remove(name);
+
+
+}

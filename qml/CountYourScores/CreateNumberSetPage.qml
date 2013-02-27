@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  CreateNumberSetPage 4.9.2012
+**  CreateNumberSetPage 21.2.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -26,15 +26,62 @@ Page
 {
     tools: commonTools
 
+    property bool editing : false
+
+    property string numbersetToEdit
+
+
+    onStatusChanged:
+    {
+
+        if (status == PageStatus.Activating)
+        {
+
+            //Clear previous data
+            for (var i = 0; i < 15; i++)
+            {
+                newNumbersRepeater.itemAt(i).text = ""
+            }
+
+
+            //Get the edited set
+            if (editing == true)
+            {
+                editedModel.switchToNumberSet(numbersetToEdit)
+
+
+
+                for (var i = 0; i < editedModel.rowCount() && i < 15; i++)
+                {
+                    newNumbersRepeater.itemAt(i).text = editedModel.getValueAt(i)
+                }
+
+                nameField.text = numbersetToEdit
+
+            }
+
+            //Clear the name field for a new set
+            else
+            {
+                nameField.text = ""
+            }
+        }
+
+    }
+
+    ReplaceableIntegerListModel
+    {
+        id: editedModel
+//        property int count: 0
+
+
+    }
+
     Column
     {
         id: nameColumn
         anchors.horizontalCenter: parent.horizontalCenter
 
-//        Label
-//        {
-//            text: "Name of the number set:"
-//        }
 
         TextField
         {
@@ -45,15 +92,7 @@ Page
         }
     }
 
-//    Label
-//    {
-//        anchors.top: nameColumn.bottom
-//        anchors.topMargin: 30
-//        anchors.horizontalCenter: parent.horizontalCenter
 
-//        id: numbersHeading
-//        text: "Numbers in pad:"
-//    }
 
     Grid
     {
@@ -63,8 +102,7 @@ Page
         anchors.topMargin: 20
         anchors.horizontalCenter: parent.horizontalCenter
 
-//        anchors.left: parent.left
-//        anchors.right: parent.right
+
         columns: appWindow.inPortrait ? 2 : 4
 
         Repeater
@@ -81,6 +119,8 @@ Page
                 placeholderText: "Number " + (index +1)
                 width: 200
             }
+
+
         }
 
     }

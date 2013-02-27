@@ -29,11 +29,13 @@ class ReplaceableIntegerListModel : public QAbstractListModel
 public:
     explicit ReplaceableIntegerListModel(QObject *parent = 0);
 
-    int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    Q_INVOKABLE int rowCount(const QModelIndex &parent = QModelIndex()) const;
 
     QVariant data(const QModelIndex &index, int role) const;
 
     Q_INVOKABLE QStringList getSetNames();
+
+    Q_INVOKABLE int getValueAt(int simpleIndex);
 
     
 signals:
