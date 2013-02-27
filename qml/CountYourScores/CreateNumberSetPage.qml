@@ -19,12 +19,12 @@
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
-import com.nokia.meego 1.0
+import Sailfish.Silica 1.0
 import countyourscores 1.2
 
 Page
 {
-    tools: commonTools
+//    tools: commonTools
 
     property bool editing : false
 
@@ -162,34 +162,34 @@ Page
         id: settingsHandler
     }
 
-    QueryDialog
-    {
-        id: confirmOverwriteDialog
+//    QueryDialog
+//    {
+//        id: confirmOverwriteDialog
 
-        titleText: "Confirm overwrite?"
+//        titleText: "Confirm overwrite?"
 
-        message: "A number set with the name " + nameField.text + " already exists. Do you wish to overwrite it?"
+//        message: "A number set with the name " + nameField.text + " already exists. Do you wish to overwrite it?"
 
-        acceptButtonText: "Yes"
+//        acceptButtonText: "Yes"
 
-        rejectButtonText: "No"
+//        rejectButtonText: "No"
 
-        onAccepted:
-        {
-            saveSet()
-        }
-    }
+//        onAccepted:
+//        {
+//            saveSet()
+//        }
+//    }
 
-    QueryDialog
-    {
-        id: defaultNotAllowedInformationDialog
+//    QueryDialog
+//    {
+//        id: defaultNotAllowedInformationDialog
 
-        titleText: "Cannot use the name \"default\""
+//        titleText: "Cannot use the name \"default\""
 
-        message: "The default number set cannot be changed. Use another name."
+//        message: "The default numberset cannot be changed. Use another name."
 
-        acceptButtonText: "OK"
-    }
+//        acceptButtonText: "OK"
+//    }
 
     function saveSet()
     {

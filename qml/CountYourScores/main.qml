@@ -18,10 +18,10 @@
 **************************************************************************/
 
 import QtQuick 1.1
-import com.nokia.meego 1.0
+import Sailfish.Silica 1.0
 import countyourscores 1.2
 
-PageStackWindow {
+ApplicationWindow {
     id: appWindow
 
     initialPage: mainPage
@@ -45,107 +45,91 @@ PageStackWindow {
         id: createNumberSetPage
     }
 
-    ToolBarLayout {
-        id: commonTools
-        visible: true
+//    ToolBarLayout {
+//        id: commonTools
+//        visible: true
 
-        ToolIcon
-        {
-            iconId: "toolbar-home"
-            visible: pageStack.depth > 2
-            onClicked:
-            {
-                pageStack.pop(null)
-            }
-        }
+//        ToolIcon
+//        {
+//            iconId: "toolbar-home"
+//            visible: pageStack.depth > 2
+//            onClicked:
+//            {
+//                pageStack.pop(null)
+//            }
+//        }
 
 
-        ToolIcon
-        {
-            platformIconId: "toolbar-back"
-            onClicked: pageStack.pop()
-            visible: pageStack.currentPage == mainPage ? false : true
-        }
+//        ToolIcon
+//        {
+//            platformIconId: "toolbar-back"
+//            onClicked: pageStack.pop()
+//            visible: pageStack.currentPage == mainPage ? false : true
+//        }
 
-        ToolIcon
-        {
-            platformIconId: "toolbar-undo"
-            visible: pageStack.currentPage == mainPage ? true : false
-            onClicked:
-            {
-                mainPage.undo()
-            }
-        }
+//        ToolIcon
+//        {
+//            platformIconId: "toolbar-undo"
+//            visible: pageStack.currentPage == mainPage ? true : false
+//            onClicked:
+//            {
+//                mainPage.undo()
+//            }
+//        }
 
-        ToolIcon
+//        ToolIcon
 
-        {
-            id: addGameIcon
-            platformIconId: "toolbar-next"
-            visible: pageStack.currentPage == mainPage ? true : false
-            onClicked:
-            {
-                mainPage.addGame()
-                if (mainPage.games > 8)
-                {
-                    enabled = false
-                    platformIconId = "toolbar-next-dimmed"
-                }
-            }
-        }
+//        {
+//            id: addGameIcon
+//            platformIconId: "toolbar-next"
+//            visible: pageStack.currentPage == mainPage ? true : false
+//            onClicked:
+//            {
+//                mainPage.addGame()
+//                if (mainPage.games > 8)
+//                {
+//                    enabled = false
+//                    platformIconId = "toolbar-next-dimmed"
+//                }
+//            }
+//        }
 
-        ToolIcon
-        {
-            platformIconId: "toolbar-delete"
-            visible: pageStack.currentPage == mainPage ? true : false
-            onClicked:
-            {
+//        ToolIcon
+//        {
+//            platformIconId: "toolbar-delete"
+//            visible: pageStack.currentPage == mainPage ? true : false
+//            onClicked:
+//            {
                 confirmClearQuery.open()
 
-            }
-        }
+//            }
+//        }
 
-        ToolIcon {
-            platformIconId: "toolbar-view-menu"
-            anchors.right: (parent === undefined) ? undefined : parent.right
-            onClicked: (myMenu.status === DialogStatus.Closed) ? myMenu.open() : myMenu.close()
-        }
-    }
+//        ToolIcon {
+//            platformIconId: "toolbar-view-menu"
+//            anchors.right: (parent === undefined) ? undefined : parent.right
+//            onClicked: (myMenu.status === DialogStatus.Closed) ? myMenu.open() : myMenu.close()
+//        }
+//    }
 
-    QueryDialog
-    {
-        id: confirmClearQuery
-        titleText: "Clear all scores?"
-        acceptButtonText: "OK"
-        rejectButtonText: "Cancel"
+//   Menu {
+//        id: myMenu
+//        visualParent: pageStack
+//        MenuLayout {
+//            MenuItem
+//            {
+//                text: qsTr("About")
+//                onClicked: pageStack.push(aboutPage)
+//            }
 
-        onAccepted:
-        {
-            mainPage.clearScores()
-            addGameIcon.enabled = true
-            addGameIcon.platformIconId = "toolbar-next"
-        }
+//            MenuItem
+//            {
+//                text: qsTr("Settings")
+//                onClicked: pageStack.push(settingsPage)
+//            }
 
-    }
-
-    Menu {
-        id: myMenu
-        visualParent: pageStack
-        MenuLayout {
-            MenuItem
-            {
-                text: qsTr("About")
-                onClicked: pageStack.push(aboutPage)
-            }
-
-            MenuItem
-            {
-                text: qsTr("Settings")
-                onClicked: pageStack.push(settingsPage)
-            }
-
-        }
-    }
+//        }
+//    }
 
 
 

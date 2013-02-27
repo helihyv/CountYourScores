@@ -19,12 +19,12 @@
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
-import com.nokia.meego 1.0
+import Sailfish.Silica 1.0
 import countyourscores 1.2
 
 Page
 {
-    tools: commonTools
+//    tools: commonTools
 
     Button
     {
@@ -82,24 +82,21 @@ Page
         property int indexOfCurrentSet: 0
     }
 
+//    SelectionDialog
+//    {
+//        id: numberSetDialog
+
+//        model: numberSetNamesModel
+
+//        titleText: qsTr("Choose the number list")
 
 
-    SelectionDialog
-    {
-        id: numberSetDialog
-
-        model: numberSetNamesModel
-
-        titleText: qsTr("Choose the set to use")
-
-
-        onAccepted:
-        {
-            mainPage.changeNumberSet(numberSetNamesModel.get(selectedIndex).name)
-            settingsHandler.saveCurrentSet(numberSetNamesModel.get(selectedIndex).name)
-
-        }
-   }
+//        onAccepted:
+//        {
+//            mainPage.changeNumberSet(numberSetNamesModel.getString(selectedIndex))
+//            settingsHandler.saveCurrentSet(numberSetNamesModel.getString(selectedIndex))
+//        }
+//   }
 
 
     Button

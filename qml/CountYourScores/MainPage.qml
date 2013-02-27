@@ -14,15 +14,15 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  MainPage 3.7.2013
+**  MainPage 19.8.2012
 **************************************************************************/
 
 import QtQuick 1.1
-import com.nokia.meego 1.0
+import Sailfish.Silica 1.0
 import countyourscores 1.2
 
 Page {
-    tools: commonTools
+//    tools: commonTools
 
     property int currentPlayer: 1
     property int games: 1
