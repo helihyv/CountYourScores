@@ -300,12 +300,10 @@ Page {
         boundsBehavior: Flickable.StopAtBounds
 
         delegate: Label
-            {
-                text: number
-                width: 50
-            }
+        {
+            text: number + "  "
 
-    }
+        }
 
     SettingsHandler
     {
