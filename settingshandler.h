@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsHandler 21.8.2012
+**  SettingsHandler 2013
 **************************************************************************/
 
 #ifndef SETTINGSHANDLER_H

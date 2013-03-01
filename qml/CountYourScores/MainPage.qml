@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  MainPage 10.2.2013
+**  MainPage 1.3.2013
 **************************************************************************/
 
 import QtQuick 1.1
@@ -304,6 +304,7 @@ Page {
             text: number + "  "
 
         }
+    }
 
     SettingsHandler
     {

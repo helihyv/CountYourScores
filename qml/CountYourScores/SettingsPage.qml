@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsPage 22.2.2013
+**  SettingsPage 1.3.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -206,7 +206,23 @@ Page
 
         onAccepted:
         {
-             settingsHandler.removeSet(selectSetToBeDeletedModel.getString(selectSetToBeDeletedDialog.selectedIndex))
+
+            //If the set to be deleted was in use, switch to the default set.
+
+            if (selectSetToBeDeletedModel.getString(selectSetToBeDeletedDialog.selectedIndex) == settingsHandler.currentSet())
+            {
+                mainPage.changeNumberSet("default")
+            }
+
+            //Delete set
+
+            settingsHandler.removeSet(selectSetToBeDeletedModel.getString(selectSetToBeDeletedDialog.selectedIndex))
+
+            numberSetNamesModel.populate(true) //refresh select model
+            selectSetToBeEditedModel.populate(false) //refresh edit model
+            selectSetToBeDeletedModel.populate(false) //refresh delete model
+
+
         }
     }
 
