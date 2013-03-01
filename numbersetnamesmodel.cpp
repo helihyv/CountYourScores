@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  NumberSetNamesModel 21.2.2013
+**  NumberSetNamesModel 1.3.2013
 **************************************************************************/
 
 #include "numbersetnamesmodel.h"
@@ -67,7 +67,7 @@ int NumberSetNamesModel::indexOfCurrentSet()
     QSettings settings;
 
 
-    qDebug() << stringList().indexOf(settings.value("CurrentSet","default").toString()) << "Visited indexofcurrentset";
+//    qDebug() << stringList().indexOf(settings.value("CurrentSet","default").toString()) << "Visited indexofcurrentset";
 
     return stringList().indexOf(settings.value("CurrentSet","default").toString());
     //returns -1 if not found, which should never happen unless the conf file has been messed up by hand-editing
