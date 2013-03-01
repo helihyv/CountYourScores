@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsHandler 21.8.2012
+**  SettingsHandler 1.3.2013
 **************************************************************************/
 
 #include "settingshandler.h"
@@ -105,6 +105,8 @@ void SettingsHandler::saveCurrentSet(QString setName)
 
 void SettingsHandler::removeSet(QString name)
 {
+    //Delete set
+
     QSettings settings;
 
     settings.beginGroup("sets");
