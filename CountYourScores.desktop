@@ -4,7 +4,7 @@ Version=1.0
 Type=Application
 Terminal=false
 Name=CountYourScores
-Exec=/opt/CountYourScores/bin/CountYourScores
+Exec=/usr/bin/invoker --type=d -s /opt/CountYourScores/bin/CountYourScores
 Icon=CountYourScores64
 X-Window-Icon=
 X-HildonDesk-ShowInToolbar=true
