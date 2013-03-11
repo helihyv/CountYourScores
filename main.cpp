@@ -1,6 +1,6 @@
 /**************************************************************************
 **  main.cpp of CountYourScores
-**  Copyright (c) 2012 Heli Hyvättinen
+**  Copyright (c) 2012–2013 Heli Hyvättinen
 **
 **  This program is free software: you can redistribute it and/or modify
 **  it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  main.cpp 19.8.2012
+**  main.cpp 11.3.2013
 **************************************************************************/
 
 #include <QtGui/QApplication>
@@ -33,9 +33,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     app->setApplicationName("CountYourScores");
     app->setOrganizationName("CountYourScores");
 
-   qmlRegisterType<ReplaceableIntegerListModel> ("countyourscores",0,1,"ReplaceableIntegerListModel");  
-   qmlRegisterType<SettingsHandler> ("countyourscores",0,1,"SettingsHandler");
-   qmlRegisterType<NumberSetNamesModel> ("countyourscores",0,1,"NumberSetNamesModel");
+   qmlRegisterType<ReplaceableIntegerListModel> ("countyourscores",1,0,"ReplaceableIntegerListModel");
+   qmlRegisterType<SettingsHandler> ("countyourscores",1,0,"SettingsHandler");
+   qmlRegisterType<NumberSetNamesModel> ("countyourscores",1,0,"NumberSetNamesModel");
 
 
     QmlApplicationViewer viewer;

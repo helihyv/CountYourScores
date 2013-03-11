@@ -14,12 +14,12 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  main.qml 7.9.2012
+**  main.qml 11.3.2013
 **************************************************************************/
 
 import QtQuick 1.1
 import org.maemo.fremantle 1.0
-import countyourscores 0.1
+import countyourscores 1.0
 
 PageStackWindow {
     id: appWindow

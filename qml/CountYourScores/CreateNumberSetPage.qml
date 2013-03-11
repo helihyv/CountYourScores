@@ -14,13 +14,13 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  CreateNumberSetPage 21.2.2013
+**  CreateNumberSetPage 11.3.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.0
 import org.maemo.fremantle 1.0
-import countyourscores 0.1
+import countyourscores 1.0
 
 Page
 {
