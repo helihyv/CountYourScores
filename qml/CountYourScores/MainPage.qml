@@ -14,12 +14,12 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  MainPage 1.3.2013
+**  MainPage 11.3.2013
 **************************************************************************/
 
 import QtQuick 1.1
 import com.nokia.meego 1.1
-import countyourscores 0.1
+import countyourscores 1.0
 
 Page {
     tools: commonTools
