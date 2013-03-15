@@ -1,3 +1,15 @@
+countyourscores (1.0.0) unstable; urgency=low
+
+  * Created numbersets can now be edited and deleted
+  * Optional black theme
+  * Highlight color for the current player easier on eye on white theme
+  * Remembers the used number set after application restart
+  * Asks confirmation on clearing all scores
+  * A link to the web page with instructions on the about page
+  * Uses booster and has splashscreens
+
+ -- Heli Hyvättinen <heli.hyvattinen@kymp.net>  Mon, 11 Mar 2013 22:21:22 +0200
+
 countyourscores (0.1.1) unstable; urgency=low
 
   * Correct package manager icon
