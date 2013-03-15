@@ -14,12 +14,12 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  CreateNumberSetPage 11.3.2013
+**  CreateNumberSetPage 15.3.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
-import com.nokia.meego 1.1
+import com.nokia.meego 1.0
 import countyourscores 1.0
 
 Page

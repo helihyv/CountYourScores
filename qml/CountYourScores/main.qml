@@ -14,11 +14,11 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  main.qml 11.3.2013
+**  main.qml 15.3.2013
 **************************************************************************/
 
 import QtQuick 1.1
-import com.nokia.meego 1.1
+import com.nokia.meego 1.0
 import countyourscores 1.0
 
 PageStackWindow {
