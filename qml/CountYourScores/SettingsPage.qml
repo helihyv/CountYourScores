@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsPage 15.3.2013
+**  SettingsPage 18.3.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -28,30 +28,30 @@ Page
 
     property variant sets
 
-    onStatusChanged:
-    {
+//    onStatusChanged:
+//    {
 
-        if (status == PageStatus.Activating)
-        {
-            //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
+//        if (status == PageStatus.Activating)
+//        {
+//            //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
 
-            numberSetNamesModel.populate(true)
-            numberSetNamesModel.count = numberSetNamesModel.rowCount()
+//            numberSetNamesModel.populate(true)
+//            numberSetNamesModel.count = numberSetNamesModel.rowCount()
 
-            numberSetNamesModel.populate(true)
-            numberSetNamesModel.count = numberSetNamesModel.rowCount()
+//            numberSetNamesModel.populate(true)
+//            numberSetNamesModel.count = numberSetNamesModel.rowCount()
 
-            numberSetDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet()
+//            numberSetDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet()
 
-            selectSetToBeEditedModel.populate(false) //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
-            selectSetToBeEditedModel.count = selectSetToBeEditedModel.rowCount()
+//            selectSetToBeEditedModel.populate(false) //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
+//            selectSetToBeEditedModel.count = selectSetToBeEditedModel.rowCount()
 
-            selectSetToBeDeletedModel.populate(false) //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
-            selectSetToBeDeletedModel.count = selectSetToBeEditedModel.rowCount()
+//            selectSetToBeDeletedModel.populate(false) //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
+//            selectSetToBeDeletedModel.count = selectSetToBeEditedModel.rowCount()
 
-        }
+//        }
 
-    }
+//    }
 
 
     Button
@@ -65,17 +65,40 @@ Page
 
         onClicked:
         {
+            getSetNames(true) //include "default" in the set name list
             numberSetDialog.open()
         }
     }
 
-    NumberSetNamesModel
+    function getSetNames(includeDefault)
+    {
+        var names = settingsHandler.setNames(includeDefault)
+        var currentSet = settingsHandler.currentSet()
+
+        numberSetNamesModel.clear()
+        numberSetDialog.selectedIndex = 0
+
+        for (var i = 0; i < names.length; i++)
+        {
+//            console.debug(names[i])
+
+            numberSetNamesModel.append({"name" : names[i]})
+
+            if (names[i] == currentSet)
+            {
+                numberSetDialog.selectedIndex = i
+            }
+
+
+        }
+    }
+
+    ListModel
     {
         id: numberSetNamesModel
-        property int count: 0
-
-
     }
+
+
 
     SelectionDialog
     {
@@ -88,8 +111,9 @@ Page
 
         onAccepted:
         {
-            mainPage.changeNumberSet(numberSetNamesModel.getString(selectedIndex))
-            settingsHandler.saveCurrentSet(numberSetNamesModel.getString(selectedIndex))
+            mainPage.changeNumberSet(numberSetNamesModel.get(selectedIndex).name)
+            settingsHandler.saveCurrentSet(numberSetNamesModel.get(selectedIndex).name)
+
         }
    }
 
@@ -123,34 +147,24 @@ Page
 
         onClicked:
         {
-            selectSetToBeEditedModel.populate(false)
-            selectSetToBeEditedModel.count = selectSetToBeEditedModel.rowCount()
+            getSetNames(false) //do not add "default" as it cannot be edited
 
             selectSetToBeEditedDialog.open()
-
-
-
         }
     }
 
 
-    NumberSetNamesModel
-    {
-        id: selectSetToBeEditedModel
-        property int count: 0
-    }
 
     SelectionDialog
     {
         id: selectSetToBeEditedDialog
-        model: selectSetToBeEditedModel
-
+        model: numberSetNamesModel
         titleText: qsTr("Choose the set to edit")
 
         onAccepted:
         {
             createNumberSetPage.editing = true
-            createNumberSetPage.numbersetToEdit = selectSetToBeEditedModel.getString(selectedIndex)
+            createNumberSetPage.numbersetToEdit = numberSetNamesModel.get(selectedIndex).name
             pageStack.push(createNumberSetPage)
         }
     }
@@ -166,28 +180,24 @@ Page
 
         onClicked:
         {
-            selectSetToBeDeletedModel.populate(false)
-            selectSetToBeDeletedModel.count = selectSetToBeDeletedModel.rowCount
+            getSetNames(false) //do not add "default" as it cannot be edited
+            selectSetToBeDeletedDialog.selectedIndex = -1 //unset preselection (needed, because getSetNames sets it
 
             selectSetToBeDeletedDialog.open()
         }
     }
 
-    NumberSetNamesModel
-    {
-        id: selectSetToBeDeletedModel
-        property int count: 0
-    }
 
     SelectionDialog
     {
         id: selectSetToBeDeletedDialog
-        model: selectSetToBeDeletedModel
+        model: numberSetNamesModel
 
         titleText: qsTr("Choose the set to delete")
 
         onAccepted:
         {
+            confirmDeleteSetDialog.message = "Do you really wish to delete the number set " + numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name +"?"
             confirmDeleteSetDialog.open()
         }
     }
@@ -198,7 +208,7 @@ Page
 
         titleText: "Confirm delete set"
 
-        message: "Do you really wish to delete the number set " + selectSetToBeDeletedModel.getString(selectSetToBeDeletedDialog.selectedIndex) +"?"
+//        message: "Do you really wish to delete the number set " + numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name +"?"
 
         acceptButtonText: "Yes"
 
@@ -209,19 +219,15 @@ Page
 
             //If the set to be deleted was in use, switch to the default set.
 
-            if (selectSetToBeDeletedModel.getString(selectSetToBeDeletedDialog.selectedIndex) == settingsHandler.currentSet())
+            if (numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name == settingsHandler.currentSet())
             {
                 mainPage.changeNumberSet("default")
+
             }
 
             //Delete set
 
-            settingsHandler.removeSet(selectSetToBeDeletedModel.getString(selectSetToBeDeletedDialog.selectedIndex))
-
-            numberSetNamesModel.populate(true) //refresh select model
-            selectSetToBeEditedModel.populate(false) //refresh edit model
-            selectSetToBeDeletedModel.populate(false) //refresh delete model
-
+            settingsHandler.removeSet( numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name)
 
         }
     }

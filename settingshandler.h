@@ -1,5 +1,5 @@
 /**************************************************************************
-**  settingshandler.h (of Suova)
+**  settingshandler.h (of CountYourScores)
 **  Copyright (c) 2012–2013 Heli Hyvättinen
 **
 **  This program is free software: you can redistribute it and/or modify
@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsHandler 2013
+**  SettingsHandler 18.3.2013
 **************************************************************************/
 
 #ifndef SETTINGSHANDLER_H
@@ -36,6 +36,8 @@ public:
     Q_INVOKABLE bool isBlackThemeOn();
 
     Q_INVOKABLE QString currentSet();
+
+    Q_INVOKABLE QStringList setNames(bool includeDefault);
 
 signals:
     
