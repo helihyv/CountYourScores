@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsHandler 1.3.2013
+**  SettingsHandler 18.3.2013
 **************************************************************************/
 
 #include "settingshandler.h"
@@ -114,4 +114,23 @@ void SettingsHandler::removeSet(QString name)
     settings.remove(name);
 
 
+}
+
+
+QStringList SettingsHandler::setNames(bool includeDefault)
+{
+    QSettings settings;
+
+    settings.beginGroup("sets"); //get only the keys for sets, not for other settings
+    QStringList sets = settings.allKeys();
+
+    if (includeDefault)
+    {
+        sets.prepend("default"); //add the built-in number set
+    }
+//    sets.append("Testing!!!");
+
+    return (sets);
+
+//    qDebug() << data(createIndex(0,0),nameRole).toString() ;
 }

@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  main.cpp 11.3.2013
+**  main.cpp 18.3.2013
 **************************************************************************/
 
 #include <QtGui/QApplication>
@@ -22,7 +22,6 @@
 #include <QtDeclarative>
 #include "replaceableintegerlistmodel.h"
 #include "settingshandler.h"
-#include "numbersetnamesmodel.h"
 
 //#include <QDebug>
 
@@ -35,7 +34,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
    qmlRegisterType<ReplaceableIntegerListModel> ("countyourscores",1,0,"ReplaceableIntegerListModel");
    qmlRegisterType<SettingsHandler> ("countyourscores",1,0,"SettingsHandler");
-   qmlRegisterType<NumberSetNamesModel> ("countyourscores",1,0,"NumberSetNamesModel");
 
 
     QmlApplicationViewer viewer;
