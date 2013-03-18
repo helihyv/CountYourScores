@@ -205,6 +205,7 @@ Page
         settingsHandler.finishSet(nameField.text)
 
         mainPage.changeNumberSet(nameField.text) //automatically take the newly created set into use
+        settingsHandler.saveCurrentSet(nameField.text) // ...and save the current set to settings
 
         nameField.text = ""
 
