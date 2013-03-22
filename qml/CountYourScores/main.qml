@@ -141,7 +141,7 @@ ApplicationWindow {
     Component.onCompleted:
     {
 
-        theme.inverted = settingsHandler.isBlackThemeOn()
+//        theme.inverted = settingsHandler.isBlackThemeOn()
     }
 
 

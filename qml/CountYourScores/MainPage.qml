@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  MainPage 19.8.2012
+**  MainPage 22.3.2013
 **************************************************************************/
 
 import QtQuick 1.1
@@ -52,7 +52,7 @@ Page {
                 width: 95
                 height: 50
                 text: "Player" + (index+1)
-                color: (index+1 == currentPlayer) ? highlightColor : platformStyle.textColor
+                color: (index+1 == currentPlayer) ? "red" : theme.primaryColor
 
                 MouseArea
                 {
@@ -142,7 +142,7 @@ Page {
                 width: 100
                 text: score
 
-                color: (index % 4) +1 == currentPlayer ? highlightColor : platformStyle.textColor
+                color: (index % 4) +1 == currentPlayer ? "red" : theme.primaryColor
 
                 MouseArea
                 {
@@ -184,7 +184,7 @@ Page {
                 width: 95
                 text: totalScore
 
-                color: (index+1 == currentPlayer) ? highlightColor : platformStyle.textColor
+                color: (index+1 == currentPlayer) ? "red" : theme.primaryColor
 
                 MouseArea
                 {
