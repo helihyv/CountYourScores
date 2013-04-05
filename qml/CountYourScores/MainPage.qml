@@ -216,21 +216,38 @@ Page {
         Component.onCompleted:
         {
             changeNumberSet( settingsHandler.currentSet() )
+
+
         }
     }
 
 
-    GridView
+    ListModel
+    {
+        id: testModel
+
+        ListElement{
+            name: "Test element"
+            display: "Another test"
+        }
+    }
+
+
+    SilicaGridView
     {
 
         id: numbersView
 
 //        anchors.fill: parent
-        anchors.top: appWindow.inPortrait ? totalScores.bottom : parent.top
+//        anchors.top: appWindow.inPortrait ? totalScores.bottom : parent.top
+
+        anchors.top : totalScores.bottom
         anchors.topMargin: 20
         anchors.bottom: addedView.top
 //        anchors.top: parent.verticalCenter
-        anchors.left: appWindow.inPortrait ? parent.left : players.right
+//        anchors.left: appWindow.inPortrait ? parent.left : players.right
+
+        anchors.left: parent.left
         anchors.right: parent.right
 //        anchors.horizontalCenter: parent.horizontalCenter
 
@@ -240,13 +257,16 @@ Page {
         cellWidth: 95
 
         model: numbersList
+//          model: testModel
+
         delegate: Rectangle
         {
             width: 95
             height:95
             border.width: 1
-            color: theme.inverted ? "#1F1F1F" : "white"
-            border.color: theme.inverted ? "white" : "black"
+            color: "black"
+            border.color: "green"
+
 
             Label
             {
@@ -254,6 +274,7 @@ Page {
                 text: display
                 font.pointSize: 64
                 font.bold: true
+                color: "red"
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
