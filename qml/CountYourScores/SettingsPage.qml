@@ -65,6 +65,7 @@ Page
         onClicked:
         {
             getSetNames(true) //include "default" in the set name list
+            numberSetDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
             numberSetDialog.open()
         }
     }
@@ -75,7 +76,13 @@ Page
         var currentSet = settingsHandler.currentSet()
 
         numberSetNamesModel.clear()
-        numberSetDialog.selectedIndex = 0
+
+         //Choose the first item here to make sure there will be a "current" item, as no item selected causes the first item to disappear
+        if (!names.length)
+        {
+           numberSetNamesModel.indexOfCurrentSet = 0
+        }
+        //fill the ListModel with the obtained set names
 
         for (var i = 0; i < names.length; i++)
         {
@@ -85,16 +92,25 @@ Page
 
             if (names[i] == currentSet)
             {
-                numberSetDialog.selectedIndex = i
+                //If the set is in use, mark it as current in order to be selected by the dialog needing it
+                numberSetNamesModel.indexOfCurrentSet = i
             }
 
 
         }
+
+        console.debug(names)
+        console.debug( numberSetNamesModel.count + " sets" )
+        console.debug( numberSetNamesModel.get(0).name)
+
+
     }
 
     ListModel
     {
         id: numberSetNamesModel
+
+        property int indexOfCurrentSet: 0
     }
 
 
@@ -149,6 +165,7 @@ Page
         {
             getSetNames(false) //do not add "default" as it cannot be edited
 
+            selectSetToBeEditedDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
             selectSetToBeEditedDialog.open()
         }
     }
@@ -180,9 +197,9 @@ Page
 
         onClicked:
         {
-            getSetNames(false) //do not add "default" as it cannot be edited
-            selectSetToBeDeletedDialog.selectedIndex = -1 //unset preselection (needed, because getSetNames sets it
+            getSetNames(false) //do not add "default" as it cannot be deleted
 
+            selectSetToBeDeletedDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
             selectSetToBeDeletedDialog.open()
         }
     }
