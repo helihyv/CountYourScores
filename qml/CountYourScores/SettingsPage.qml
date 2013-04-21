@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsPage 18.3.2013
+**  SettingsPage 21.4.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -25,34 +25,6 @@ import countyourscores 1.0
 Page
 {
     tools: commonTools
-
-    property variant sets
-
-//    onStatusChanged:
-//    {
-
-//        if (status == PageStatus.Activating)
-//        {
-//            //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
-
-//            numberSetNamesModel.populate(true)
-//            numberSetNamesModel.count = numberSetNamesModel.rowCount()
-
-//            numberSetNamesModel.populate(true)
-//            numberSetNamesModel.count = numberSetNamesModel.rowCount()
-
-//            numberSetDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet()
-
-//            selectSetToBeEditedModel.populate(false) //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
-//            selectSetToBeEditedModel.count = selectSetToBeEditedModel.rowCount()
-
-//            selectSetToBeDeletedModel.populate(false) //Populating the model with data. NEEDS to be done TWICE in order to SelectionDialog to show the data.
-//            selectSetToBeDeletedModel.count = selectSetToBeEditedModel.rowCount()
-
-//        }
-
-//    }
-
 
     Button
     {
@@ -66,8 +38,9 @@ Page
         onClicked:
         {
             getSetNames(true) //include "default" in the set name list
-            numberSetDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
+            numberSetDialog.selectedIndex = 0
             numberSetDialog.open()
+            numberSetDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
         }
     }
 
@@ -99,11 +72,6 @@ Page
 
 
         }
-
-        console.debug(names)
-        console.debug( numberSetNamesModel.count + " sets" )
-        console.debug( numberSetNamesModel.get(0).name)
-
 
     }
 
@@ -165,8 +133,9 @@ Page
         {
             getSetNames(false) //do not add "default" as it cannot be edited
 
-            selectSetToBeEditedDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
+            selectSetToBeEditedDialog.selectedIndex = 0
             selectSetToBeEditedDialog.open()
+            selectSetToBeEditedDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
         }
     }
 
@@ -199,8 +168,9 @@ Page
         {
             getSetNames(false) //do not add "default" as it cannot be deleted
 
-            selectSetToBeDeletedDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
+            selectSetToBeDeletedDialog.selectedIndex = 0
             selectSetToBeDeletedDialog.open()
+            selectSetToBeDeletedDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
         }
     }
 
