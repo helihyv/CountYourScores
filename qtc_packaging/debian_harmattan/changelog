@@ -1,3 +1,11 @@
+countyourscores (1.0.1) unstable; urgency=low
+  * Works also on PR 1.1
+  * Portrait splashscreen right way round
+  * When a new set is created and taken to use it is also saved to settings as the current set
+  * When the current set is deleted and default gets taken into use "default" is also saved to the setting as the current set
+
+ -- Heli Hyvättinen <heli.hyvattinen@kymp.net>  Sun, 28 Apr 2013 20:05:54 +0300
+
 countyourscores (1.0.0) unstable; urgency=low
 
   * Created numbersets can now be edited and deleted
