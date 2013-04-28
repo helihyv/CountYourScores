@@ -14,13 +14,13 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsPage 21.4.2013
+**  SettingsPage 28.4.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 import com.nokia.meego 1.0
-import countyourscores 1.0
+import countyourscores 1.1
 
 Page
 {
