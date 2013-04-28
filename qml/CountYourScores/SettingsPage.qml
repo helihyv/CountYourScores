@@ -210,6 +210,7 @@ Page
             if (numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name == settingsHandler.currentSet())
             {
                 mainPage.changeNumberSet("default")
+                settingsHandler.saveCurrentSet("default")
 
             }
 
