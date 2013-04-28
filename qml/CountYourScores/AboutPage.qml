@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  AboutPage 20.1.2013
+**  AboutPage 28.4.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -30,9 +30,8 @@ Page
         anchors.fill: parent
 
         text: "<h2>CountYourScores v. 0.1</h2>(c) Heli Hyvättinen 2012<br>This program is free software under the General Public License 3" +
-               "<p>The source code is available from <a href=https://github.com/helihyv/CountYourScores> https://github.com/helihyv/CountYourScores</a>" +
-                             "<p>The source code is available from <a href=https://github.com/helihyv/CountYourScores> https://github.com/helihyv/CountYourScores</a>" +
-              "<p> You can find instructions of use on <a href=http://helihyv.github.com/CountYourScores/ > http://helihyv.github.com/CountYourScores/</a>"+
+               "<p>The source code is available from <a href=https://github.com/helihyv/CountYourScores/tree/fremantle> https://github.com/helihyv/CountYourScores/tree/fremantle</a>" +
+                "<p> You can find instructions of use on <a href=http://helihyv.github.io/CountYourScores/ > http://helihyv.github.io/CountYourScores/</a>"+
                 "<p>Bugreports and feature requests are welcome at <a href=https://github.com/helihyv/CountYourScores/issues> https://github.com/helihyv/CountYourScores/issues</a>"
         wrapMode: Text.Wrap
 
