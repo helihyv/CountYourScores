@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  main.cpp 18.3.2013
+**  main.cpp 28.4.2013
 **************************************************************************/
 
 #include <QtGui/QApplication>
@@ -32,8 +32,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     app->setApplicationName("CountYourScores");
     app->setOrganizationName("CountYourScores");
 
-   qmlRegisterType<ReplaceableIntegerListModel> ("countyourscores",1,0,"ReplaceableIntegerListModel");
-   qmlRegisterType<SettingsHandler> ("countyourscores",1,0,"SettingsHandler");
+   qmlRegisterType<ReplaceableIntegerListModel> ("countyourscores",1,1,"ReplaceableIntegerListModel");
+   qmlRegisterType<SettingsHandler> ("countyourscores",1,1,"SettingsHandler");
 
 
     QmlApplicationViewer viewer;
