@@ -73,37 +73,39 @@ PageStackWindow {
             visible: pageStack.currentPage == mainPage ? false : true
         }
 
-        ToolIcon
+        ToolButton
         {
-            platformIconId: "toolbar-undo"
+            text: "Undo"
             visible: pageStack.currentPage == mainPage ? true : false
+            width: 110
             onClicked:
             {
                 mainPage.undo()
             }
         }
 
-        ToolIcon
+        ToolButton
 
         {
             id: addGameIcon
-            platformIconId: "toolbar-next"
+            text: "Next game"
             visible: pageStack.currentPage == mainPage ? true : false
+            width: 135
             onClicked:
             {
                 mainPage.addGame()
                 if (mainPage.games > 8)
                 {
                     enabled = false
-                    platformIconId = "toolbar-next-dimmed"
                 }
             }
         }
 
-        ToolIcon
+        ToolButton
         {
-            platformIconId: "toolbar-delete"
+            text: "Clear all"
             visible: pageStack.currentPage == mainPage ? true : false
+            width: 110
             onClicked:
             {
                 confirmClearQuery.open()
@@ -129,7 +131,6 @@ PageStackWindow {
         {
             mainPage.clearScores()
             addGameIcon.enabled = true
-            addGameIcon.platformIconId = "toolbar-next"
         }
 
     }
