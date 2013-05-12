@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsHandler 18.3.2013
+**  SettingsHandler 20.5.2013
 **************************************************************************/
 
 #include "settingshandler.h"
@@ -111,8 +111,42 @@ void SettingsHandler::removeSet(QString name)
 
     settings.beginGroup("sets");
 
-    settings.remove(name);
+    if(!name.isEmpty())
+    {
 
+        settings.remove(name);
+    }
+
+    else //empty string on remove will delete *all* keys in th group
+    {
+    //move other sets to safe
+
+       QSettings::SettingsMap sets;
+
+        QStringList names = setNames(false);
+
+        QString safegoerName;
+
+        foreach (safegoerName,names)
+        {
+            //copy sets that do not have empty name to safe place
+
+            if (!safegoerName.isEmpty())
+            sets.insert(safegoerName,settings.value(safegoerName));
+        }
+
+        settings.remove(""); //delete *all* sets from settings
+
+        //copy back to settings from the safe place
+
+        QString toBeRestoredSet;
+
+        foreach (toBeRestoredSet, sets.keys())
+        {
+            settings.setValue(toBeRestoredSet,sets.value(toBeRestoredSet));
+        }
+
+    }
 
 }
 
