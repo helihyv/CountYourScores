@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  main.qml 28.4.2013
+**  main.qml 20.5.2013
 **************************************************************************/
 
 import QtQuick 1.1
@@ -78,6 +78,7 @@ PageStackWindow {
             text: "Undo"
             visible: pageStack.currentPage == mainPage ? true : false
             width: 110
+            enabled: mainPage.undoPossible == 0 ? false : true
             onClicked:
             {
                 mainPage.undo()

@@ -28,6 +28,8 @@ Page {
     property int games: 1
     property string highlightColor : theme.inverted ? "fuchsia" : "firebrick"
 
+    property bool undoPossible: addedModel.count
+
 
 
 
