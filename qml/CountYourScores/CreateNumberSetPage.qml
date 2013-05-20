@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  CreateNumberSetPage 28.4.2013
+**  CreateNumberSetPage 20.5.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -147,6 +147,11 @@ Page
 
             }
 
+            else if (nameField.text == "")
+            {
+                nameIsObligatoryDialog.open()
+            }
+
             else saveSet()
 
         }
@@ -181,7 +186,7 @@ Page
 
         titleText: "Cannot use the name \"default\""
 
-        message: "The default numberset cannot be changed. Use another name."
+        message: "The default number set cannot be changed. Use another name."
 
         acceptButtonText: "OK"
     }
@@ -211,6 +216,18 @@ Page
 
         pageStack.pop(null) //Go back to main page
 
+    }
+
+
+    QueryDialog
+    {
+        id: nameIsObligatoryDialog
+
+        titleText: "The number set has no name"
+
+        message: "Give your number set a name before saving it."
+
+        acceptButtonText: "OK"
     }
 }
 
