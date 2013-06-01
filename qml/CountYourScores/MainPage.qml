@@ -22,13 +22,122 @@ import Sailfish.Silica 1.0
 import countyourscores 1.2
 
 Page {
-//    tools: commonTools
+    //    tools: commonTools
 
     property int currentPlayer: 1
     property int games: 1
     property string highlightColor : theme.inverted ? "fuchsia" : "firebrick"
 
+    PageHeader      //This is just to provide nonmousearea space below PullDownMenu, since it does not seem to work in the emulator otherwise
+    {
+        id: pageTitle
+        title: ""
+    }
 
+    SilicaFlickable
+    {
+
+        anchors.fill: parent
+        contentHeight: childrenRect.height
+
+        PullDownMenu
+        {
+
+            MenuItem
+            {
+                text: qsTr("About")
+                onClicked: pageStack.push(aboutPage)
+            }
+
+            MenuItem
+            {
+                text: qsTr("Settings")
+                onClicked: pageStack.push(settingsPage)
+            }
+
+            MenuItem
+            {
+                text: qsTr("Clear all scores")
+                onClicked:
+                {
+                    clearScores()
+                    addGameMenuItem.visible = true
+
+                }
+            }
+
+            MenuItem
+            {
+                id: addGameMenuItem
+                text: qsTr("Next game")
+                onClicked:
+                {
+                    addGame()
+                    if (games > 8)
+                    {
+                        visible = false
+                        platformIconId = "toolbar-next-dimmed"
+                    }
+                }
+            }
+
+            MenuItem
+            {
+                text: "Undo"
+                onClicked:
+                {
+                    undo()
+                }
+            }
+
+
+
+
+
+
+            //        ToolIcon
+            //        {
+            //            platformIconId: "toolbar-undo"
+            //            visible: pageStack.currentPage == mainPage ? true : false
+            //            onClicked:
+            //            {
+            //                mainPage.undo()
+            //            }
+            //        }
+
+            //        ToolIcon
+
+            //        {
+//                        id: addGameIcon
+            //            platformIconId: "toolbar-next"
+            //            visible: pageStack.currentPage == mainPage ? true : false
+            //            onClicked:
+            //            {
+            //                mainPage.addGame()
+            //                if (mainPage.games > 8)
+            //                {
+            //                    enabled = false
+            //                    platformIconId = "toolbar-next-dimmed"
+            //                }
+            //            }
+            //        }
+
+            //        ToolIcon
+            //        {
+            //            platformIconId: "toolbar-delete"
+            //            visible: pageStack.currentPage == mainPage ? true : false
+            //            onClicked:
+            //            {
+            //                mainPage.clearScores()
+            //                addGameIcon.enabled = true
+            //                addGameIcon.platformIconId = "toolbar-next"
+
+            //            }
+            //        }
+
+
+        }
+    }
 
 
 
@@ -36,7 +145,7 @@ Page {
     {
         id: players
 
-        anchors.top: parent.top
+        anchors.top: pageTitle.bottom
 
         Label
         {
@@ -47,7 +156,7 @@ Page {
         Repeater
         {
             model: 4
-        Label
+            Label
             {
                 width: 95
                 height: 50
@@ -97,284 +206,286 @@ Page {
 
 
 
-        Column
-        {
-            id: gameTexts
-            anchors.top: players.bottom
-            anchors.left: parent.left
-            anchors.bottom: totalScores.top
-
-
-            Repeater
-            {
-                model: games
-
-                Label
-                {
-                    width: 100
-                    height: 30
-                    text: "Game " + (index+1)
-                }
-            }
-
-        }
-
-
-        GridView
-        {
-
-            anchors.top: players.bottom
-            anchors.left: gameTexts.right
-            anchors.right: appWindow.inPortrait ? parent.right : players.right
-            anchors.bottom: totalScores.top
-            id: scoreView
-
-            boundsBehavior: Flickable.StopAtBounds
-
-            cellHeight: 30
-            cellWidth: 95
-
-            model: scoresModel
-
-            delegate: Label
-            {
-
-                width: 100
-                text: score
-
-                color: (index % 4) +1 == currentPlayer ? "red" : theme.primaryColor
-
-                MouseArea
-                {
-                    anchors.fill: parent
-                    onClicked:
-                    {
-                        currentPlayer = (index % 4) + 1
-                        addedModel.clear()
-                    }
-
-                }
-            }
-
-        }
-
-
-    Row
+    Column
     {
-        id: totalScores
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.verticalCenterOffset: appWindow.inPortrait ? 0 : 140
+        id: gameTexts
+        anchors.top: players.bottom
+        anchors.left: parent.left
+        anchors.bottom: totalScores.top
 
-
-        Label
-        {
-            width: 100
-            text: "Total"
-        }
 
         Repeater
         {
-            id: totalScoreRepeater
-            model: 4
+            model: games
 
             Label
             {
-                property int player: index +1
-                property int totalScore: 0
-                width: 95
-                text: totalScore
-
-                color: (index+1 == currentPlayer) ? "red" : theme.primaryColor
-
-                MouseArea
-                {
-                    anchors.fill: parent
-                    onClicked:
-                    {
-                        currentPlayer = index+1
-                        addedModel.clear()
-                    }
-                }
+                width: 100
+                height: 30
+                text: "Game " + (index+1)
             }
         }
+
     }
 
 
-
-    ReplaceableIntegerListModel
-    {
-        id: numbersList
-
-//        onModelAboutToBeReset:
-//        {
-//            console.debug("Model to be reset")
-//        }
-
-//        onModelReset:
-//            console.debug("Model has been reset")
-
-        Component.onCompleted:
-        {
-            changeNumberSet( settingsHandler.currentSet() )
-
-
-        }
-    }
-
-
-    ListModel
-    {
-        id: testModel
-
-        ListElement{
-            name: "Test element"
-            display: "Another test"
-        }
-    }
-
-
-    SilicaGridView
+    GridView
     {
 
-        id: numbersView
-
-//        anchors.fill: parent
-//        anchors.top: appWindow.inPortrait ? totalScores.bottom : parent.top
-
-        anchors.top : totalScores.bottom
-        anchors.topMargin: 20
-        anchors.bottom: addedView.top
-//        anchors.top: parent.verticalCenter
-//        anchors.left: appWindow.inPortrait ? parent.left : players.right
-
-        anchors.left: parent.left
-        anchors.right: parent.right
-//        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: players.bottom
+        anchors.left: gameTexts.right
+        anchors.right: appWindow.inPortrait ? parent.right : players.right
+        anchors.bottom: totalScores.top
+        id: scoreView
 
         boundsBehavior: Flickable.StopAtBounds
 
-        cellHeight: 95
+        cellHeight: 30
         cellWidth: 95
 
-        model: numbersList
-//          model: testModel
+        model: scoresModel
 
-        delegate: Rectangle
+        delegate: Label
         {
-            width: 95
-            height:95
-            border.width: 1
-            color: "black"
-            border.color: "green"
 
+        width: 100
+        text: score
 
-            Label
+        color: (index % 4) +1 == currentPlayer ? "red" : theme.primaryColor
+
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked:
             {
-                anchors.fill: parent
-                text: display
-                font.pointSize: 64
-                font.bold: true
-                color: "red"
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
+                currentPlayer = (index % 4) + 1
+                addedModel.clear()
             }
+
+        }
+    }
+
+}
+
+
+Row
+{
+    id: totalScores
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.verticalCenterOffset: appWindow.inPortrait ? 0 : 140
+
+
+    Label
+    {
+        width: 100
+        text: "Total"
+    }
+
+    Repeater
+    {
+        id: totalScoreRepeater
+        model: 4
+
+        Label
+        {
+            property int player: index +1
+            property int totalScore: 0
+            width: 95
+            text: totalScore
+
+            color: (index+1 == currentPlayer) ? "red" : theme.primaryColor
 
             MouseArea
             {
                 anchors.fill: parent
-                hoverEnabled: true
                 onClicked:
                 {
-
-
-                    scoresModel.get(4*(games-1) + currentPlayer-1).score += display
-
-
-
-                    totalScoreRepeater.itemAt(currentPlayer-1).totalScore += display
-
-                    addedModel.append({"number" : display})
-                    addedView.positionViewAtEnd ()
+                    currentPlayer = index+1
+                    addedModel.clear()
                 }
-
             }
-
         }
     }
+}
 
-    ListModel
+
+
+ReplaceableIntegerListModel
+{
+    id: numbersList
+
+    //        onModelAboutToBeReset:
+    //        {
+    //            console.debug("Model to be reset")
+    //        }
+
+    //        onModelReset:
+    //            console.debug("Model has been reset")
+
+    Component.onCompleted:
     {
-        id: addedModel
+        changeNumberSet( settingsHandler.currentSet() )
+
+
+    }
+}
+
+
+ListModel
+{
+    id: testModel
+
+    ListElement{
+        name: "Test element"
+        display: "Another test"
+    }
+}
+
+
+SilicaGridView
+{
+
+    id: numbersView
+
+    //        anchors.fill: parent
+    //        anchors.top: appWindow.inPortrait ? totalScores.bottom : parent.top
+
+    anchors.top : totalScores.bottom
+    anchors.topMargin: 20
+    anchors.bottom: addedView.top
+    //        anchors.top: parent.verticalCenter
+    //        anchors.left: appWindow.inPortrait ? parent.left : players.right
+
+    anchors.left: parent.left
+    anchors.right: parent.right
+    //        anchors.horizontalCenter: parent.horizontalCenter
+
+    boundsBehavior: Flickable.StopAtBounds
+
+    cellHeight: 95
+    cellWidth: 95
+
+    model: numbersList
+    //          model: testModel
+
+    delegate: Rectangle
+    {
+    width: 95
+    height:95
+    border.width: 1
+    color: "black"
+    border.color: "green"
+
+
+    Label
+    {
+        anchors.fill: parent
+        text: display
+        font.pointSize: 64
+        font.bold: true
+        color: "red"
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    MouseArea
+    {
+        anchors.fill: parent
+        hoverEnabled: true
+        onClicked:
+        {
+
+
+            scoresModel.get(4*(games-1) + currentPlayer-1).score += display
+
+
+
+            totalScoreRepeater.itemAt(currentPlayer-1).totalScore += display
+
+            addedModel.append({"number" : display})
+            addedView.positionViewAtEnd ()
+        }
 
     }
 
-    ListView
+}
+}
+
+ListModel
+{
+    id: addedModel
+
+}
+
+ListView
+{
+    id: addedView
+    anchors.bottom: parent.bottom
+    height: 30
+    anchors.left: parent.left
+    anchors.right: appWindow.inPortrait ? parent.right : numbersView.left
+    model: addedModel
+    orientation: ListView.Horizontal
+
+    boundsBehavior: Flickable.StopAtBounds
+
+    delegate: Label
     {
-        id: addedView
-        anchors.bottom: parent.bottom
-        height: 30
-        anchors.left: parent.left
-        anchors.right: appWindow.inPortrait ? parent.right : numbersView.left
-        model: addedModel
-        orientation: ListView.Horizontal
-
-        boundsBehavior: Flickable.StopAtBounds
-
-        delegate: Label
-        {
             text: number + "  "
 
         }
-    }
+}
 
-    SettingsHandler
+
+
+SettingsHandler
+{
+    id: settingsHandler
+}
+
+function clearScores()
+{
+    scoresModel.clear()
+    for (var i = 0; i<4; i++)
     {
-        id: settingsHandler
+        scoresModel.append({"score" : 0})
+        totalScoreRepeater.itemAt(i).totalScore = 0
     }
+    games = 1
+    addedModel.clear()
 
-    function clearScores()
+
+}
+
+function undo()
+{
+    if (addedModel.count > 0)
     {
-        scoresModel.clear()
-        for (var i = 0; i<4; i++)
-        {
-            scoresModel.append({"score" : 0})
-            totalScoreRepeater.itemAt(i).totalScore = 0
-        }
-        games = 1
-        addedModel.clear()
-
-
+        scoresModel.get(4*(games-1) + currentPlayer-1).score -= addedModel.get(addedModel.count-1).number
+        totalScoreRepeater.itemAt(currentPlayer-1).totalScore -= addedModel.get(addedModel.count-1).number
+        addedModel.remove(addedModel.count-1)
     }
+}
 
-    function undo()
+function addGame()
+{
+    games++
+    //        if (games >8)
+    //            commonTools. = false
+
+    for (var i = 0; i<4; i++)
     {
-        if (addedModel.count > 0)
-        {
-            scoresModel.get(4*(games-1) + currentPlayer-1).score -= addedModel.get(addedModel.count-1).number
-            totalScoreRepeater.itemAt(currentPlayer-1).totalScore -= addedModel.get(addedModel.count-1).number
-            addedModel.remove(addedModel.count-1)
-        }
+        scoresModel.append({"score" : 0})
     }
 
-    function addGame()
-    {
-        games++
-//        if (games >8)
-//            commonTools. = false
+    addedModel.clear()
 
-        for (var i = 0; i<4; i++)
-        {
-            scoresModel.append({"score" : 0})
-        }
+}
 
-        addedModel.clear()
-
-    }
-
-    function changeNumberSet(setName)
-    {
-        numbersList.switchToNumberSet(setName)
-    }
+function changeNumberSet(setName)
+{
+    numbersList.switchToNumberSet(setName)
+}
 
 
 }
