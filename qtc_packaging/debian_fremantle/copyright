@@ -1,16 +1,16 @@
-This package was debianized by Heli Hyvättinen <heli.hyvattinen@kymp.net> on
-Sun, 05 Aug 2012 12:34:07 +0300.
+This package for Maemo5 was created by Heli Hyvättinen <heli.hyvattinen@netti.fi> on
+Sun, 05 Aug 2012 12:34:07 +0300 and updated to the version 1.0.2 on 06 Jul 2013.
 
 It was downloaded from https://github.com/helihyv/CountYourScores
 
 Author:
 
-    Heli Hyvättinen heli.hyvattinen@kymp.net
+    Heli Hyvättinen heli.hyvattinen@netti.fi
 
 
 Copyright:
 
-    <Copyright (C) 2012 Heli Hyvättinen>
+    <Copyright (C) 2012–2013 Heli Hyvättinen>
 
 
 License:
@@ -32,9 +32,6 @@ License:
 On Debian systems, the complete text of the GNU General
 Public License can be found in `/usr/share/common-licenses/GPL'.
 
-The Maemo 5 packaging is (C) 2012, Heli Hyvättinen <heli.hyvattinen@kymp.net> and
+The Maemo 5 packaging is (C) 2012–2013, Heli Hyvättinen <heli.hyvattinen@netti.fi> and
 is licensed under the GPL, see above.
 
-
-# Please also look if there are files or directories which have a
-# different copyright/license attached and list them here.

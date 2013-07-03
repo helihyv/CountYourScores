@@ -1,3 +1,19 @@
+countyourscores (1.0.2) unstable; urgency=low
+
+  * Number sets can now be edited and deleted
+  * Remembers the last used number set
+  * Optional black theme
+  * Different shade of red ("firebrick") as selected player color on the white theme
+  * Undo, Next game and Clear all are now text buttons instead of icon buttons
+  * Undo button is disabled when there is nothing to undo
+  * Asks confirmation before clearing all scores
+  * Cannot create a sets with an empty name
+  * Added view no longer truncates numbers with more than three digits
+  * Added a link to the web page with instructions on the about page
+  * Link to the source code on the about page points directly to the sources of the version for Fremantle
+
+ -- Heli Hyvättinen <heli.hyvattinen@netti.fi>  Wed, 03 Jul 2013 23:34:48 +0300
+
 countyourscores (0.1.1) unstable; urgency=low
 
   * Correct package manager icon
