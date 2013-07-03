@@ -14,12 +14,12 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  MainPage 28.4.2013
+**  MainPage 3.7.2013
 **************************************************************************/
 
 import QtQuick 1.0
 import org.maemo.fremantle 1.0
-import countyourscores 1.1
+import countyourscores 1.2
 
 Page {
     tools: commonTools
