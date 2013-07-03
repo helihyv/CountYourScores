@@ -17,7 +17,7 @@
 **  main.qml 3.7.2013
 **************************************************************************/
 
-import QtQuick 1.1
+import QtQuick 1.0
 import org.maemo.fremantle 1.0
 import countyourscores 1.2
 
