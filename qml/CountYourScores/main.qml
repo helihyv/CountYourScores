@@ -19,7 +19,7 @@
 
 import QtQuick 1.1
 import com.nokia.meego 1.0
-import countyourscores 1.1
+import countyourscores 1.2
 
 PageStackWindow {
     id: appWindow
