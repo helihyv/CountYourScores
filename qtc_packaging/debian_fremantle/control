@@ -9,6 +9,7 @@ Homepage: https://github.com/helihyv/CountYourScores/tree/fremantle
 Package: countyourscores
 Architecture: any
 Depends: qt-components-10, ${shlibs:Depends}, ${misc:Depends}
+XSBC-Bugtracker: https://github.com/helihyv/CountYourScores/issues
 Description: Used to count scores on e.g. card games
   An application for counting / keeping scores. Number pad for entering scores, adds up the given scores both for a single game and total sum. Usable e.g. in some card games. Numbers in number pad are customizable.
 XB-Maemo-Upgrade-Description: Used to count scores on e.g. card games
