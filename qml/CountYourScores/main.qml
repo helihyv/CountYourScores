@@ -100,7 +100,7 @@ ApplicationWindow {
 //            visible: pageStack.currentPage == mainPage ? true : false
 //            onClicked:
 //            {
-                confirmClearQuery.open()
+//                confirmClearQuery.open()
 
 //            }
 //        }
