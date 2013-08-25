@@ -219,16 +219,16 @@ Page
     }
 
 
-    QueryDialog
-    {
-        id: nameIsObligatoryDialog
+//    QueryDialog
+//    {
+//        id: nameIsObligatoryDialog
 
-        titleText: "The number set has no name"
+//        titleText: "The number set has no name"
 
-        message: "Give your number set a name before saving it."
+//        message: "Give your number set a name before saving it."
 
-        acceptButtonText: "OK"
-    }
+//        acceptButtonText: "OK"
+//    }
 }
 
 

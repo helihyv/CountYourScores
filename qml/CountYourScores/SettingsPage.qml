@@ -138,19 +138,19 @@ Page
 
 
 
-    SelectionDialog
-    {
-        id: selectSetToBeEditedDialog
-        model: numberSetNamesModel
-        titleText: qsTr("Choose the set to edit")
+//    SelectionDialog
+//    {
+//        id: selectSetToBeEditedDialog
+//        model: numberSetNamesModel
+//        titleText: qsTr("Choose the set to edit")
 
-        onAccepted:
-        {
-            createNumberSetPage.editing = true
-            createNumberSetPage.numbersetToEdit = numberSetNamesModel.get(selectedIndex).name
-            pageStack.push(createNumberSetPage)
-        }
-    }
+//        onAccepted:
+//        {
+//            createNumberSetPage.editing = true
+//            createNumberSetPage.numbersetToEdit = numberSetNamesModel.get(selectedIndex).name
+//            pageStack.push(createNumberSetPage)
+//        }
+//    }
 
     Button
     {
@@ -172,50 +172,50 @@ Page
     }
 
 
-    SelectionDialog
-    {
-        id: selectSetToBeDeletedDialog
-        model: numberSetNamesModel
+//    SelectionDialog
+//    {
+//        id: selectSetToBeDeletedDialog
+//        model: numberSetNamesModel
 
-        titleText: qsTr("Choose the set to delete")
+//        titleText: qsTr("Choose the set to delete")
 
-        onAccepted:
-        {
-            confirmDeleteSetDialog.message = "Do you really wish to delete the number set " + numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name +"?"
-            confirmDeleteSetDialog.open()
-        }
-    }
+//        onAccepted:
+//        {
+//            confirmDeleteSetDialog.message = "Do you really wish to delete the number set " + numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name +"?"
+//            confirmDeleteSetDialog.open()
+//        }
+//    }
 
-    QueryDialog
-    {
-        id: confirmDeleteSetDialog
+//    QueryDialog
+//    {
+//        id: confirmDeleteSetDialog
 
-        titleText: "Confirm delete set"
+//        titleText: "Confirm delete set"
 
-//        message: "Do you really wish to delete the number set " + numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name +"?"
+////        message: "Do you really wish to delete the number set " + numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name +"?"
 
-        acceptButtonText: "Yes"
+//        acceptButtonText: "Yes"
 
-        rejectButtonText: "No"
+//        rejectButtonText: "No"
 
-        onAccepted:
-        {
+//        onAccepted:
+//        {
 
-            //If the set to be deleted was in use, switch to the default set.
+//            //If the set to be deleted was in use, switch to the default set.
 
-            if (numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name == settingsHandler.currentSet())
-            {
-                mainPage.changeNumberSet("default")
-                settingsHandler.saveCurrentSet("default")
+//            if (numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name == settingsHandler.currentSet())
+//            {
+//                mainPage.changeNumberSet("default")
+//                settingsHandler.saveCurrentSet("default")
 
-            }
+//            }
 
-            //Delete set
+//            //Delete set
 
-            settingsHandler.removeSet( numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name)
+//            settingsHandler.removeSet( numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name)
 
-        }
-    }
+//        }
+//    }
 
 
         Label
