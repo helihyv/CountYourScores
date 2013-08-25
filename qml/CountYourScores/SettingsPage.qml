@@ -218,35 +218,7 @@ Page
 //    }
 
 
-        Label
-        {
-            id: themeSwitchLabel
-            text: qsTr("Black Theme ")
-            font.bold: true
-            anchors.top: appWindow.inPortrait ? deleteButton.bottom : parent.top
-            anchors.topMargin: appWindow.inPortrait ? 50 : 30
-            anchors.left: appWindow.inPortrait ? deleteButton.left : selectNumberSetButton.right
-            anchors.leftMargin: appWindow.inPortrait ? 0 : 75
-        }
-        Switch
-        {
-            id: themeSwitch
-            anchors.verticalCenter: themeSwitchLabel.verticalCenter
-//            anchors.topMargin: 50
-            anchors.right: appWindow.inPortrait ? deleteButton.right : parent.right
-            anchors.rightMargin: appWindow.inPortrait ? 0 : 75
 
-            Component.onCompleted:
-            {
-                checked = settingsHandler.isBlackThemeOn()
-            }
-
-            onCheckedChanged:
-            {
-                theme.inverted = checked
-                settingsHandler.setBlackTheme(checked)
-            }
-        }
 
 
     SettingsHandler
