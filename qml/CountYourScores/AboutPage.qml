@@ -14,11 +14,11 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  AboutPage 28.4.2013
+**  AboutPage 25.8.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
-import QtQuick 1.1
+import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page

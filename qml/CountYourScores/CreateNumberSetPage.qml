@@ -14,11 +14,11 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  CreateNumberSetPage 3.7.2013
+**  CreateNumberSetPage 25.8.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
-import QtQuick 1.1
+import QtQuick 2.0
 import Sailfish.Silica 1.0
 import countyourscores 1.2
 
