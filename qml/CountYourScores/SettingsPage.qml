@@ -32,7 +32,7 @@ Page
         anchors.top: parent.top
         anchors.topMargin: 20
         anchors.horizontalCenter:  parent.horizontalCenter
-        anchors.horizontalCenterOffset: appWindow.inPortrait ? 0 : -200
+//        anchors.horizontalCenterOffset: appWindow.inPortrait ? 0 : -200
         text: qsTr("Select a number set")
 
         onClicked:
