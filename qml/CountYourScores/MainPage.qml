@@ -26,7 +26,7 @@ Page {
 
     property int currentPlayer: 1
     property int games: 1
-    property string highlightColor : theme.inverted ? "fuchsia" : "firebrick"
+    property string highlightColor : Theme.highlightColor
 
     PageHeader      //This is just to provide nonmousearea space below PullDownMenu, since it does not seem to work in the emulator otherwise
     {
@@ -161,7 +161,7 @@ Page {
                 width: 95
                 height: 50
                 text: "Player" + (index+1)
-                color: (index+1 == currentPlayer) ? "red" : theme.primaryColor
+                color: (index+1 == currentPlayer) ? "red" : Theme.primaryColor
 
                 MouseArea
                 {
@@ -251,7 +251,7 @@ Page {
         width: 100
         text: score
 
-        color: (index % 4) +1 == currentPlayer ? "red" : theme.primaryColor
+        color: (index % 4) +1 == currentPlayer ? "red" : Theme.primaryColor
 
         MouseArea
         {
@@ -293,7 +293,7 @@ Row
             width: 95
             text: totalScore
 
-            color: (index+1 == currentPlayer) ? "red" : theme.primaryColor
+            color: (index+1 == currentPlayer) ? "red" : Theme.primaryColor
 
             MouseArea
             {
