@@ -31,6 +31,8 @@ Page
     property string numbersetToEdit
 
 
+
+
     onStatusChanged:
     {
 
@@ -103,7 +105,9 @@ Page
         anchors.horizontalCenter: parent.horizontalCenter
 
 
-        columns: appWindow.inPortrait ? 2 : 4
+        columns: isPortrait ? 2 : 4
+
+
 
         Repeater
         {
