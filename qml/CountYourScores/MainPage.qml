@@ -27,7 +27,7 @@ Page {
     property int currentPlayer: 1
     property int games: 1
 
-    property int itemWidthInScoreGrid: isPortrait ? Screen.width/5 : Screen.height/10
+    property int itemWidthInScoreGrid: Screen.width/5
 
     PageHeader      //This is just to provide nonmousearea space below PullDownMenu, since it does not seem to work in the emulator otherwise
     {
@@ -276,7 +276,7 @@ Row
 {
     id: totalScores
     anchors.verticalCenter: parent.verticalCenter
-    anchors.verticalCenterOffset: appWindow.inPortrait ? 0 : 140
+    anchors.verticalCenterOffset: isPortrait ? 0 : 140
 
 
     Label
@@ -368,16 +368,16 @@ SilicaGridView
 
     boundsBehavior: Flickable.StopAtBounds
 
-    cellHeight: 95
-    cellWidth: 95
+    cellHeight: itemWidthInScoreGrid
+    cellWidth: itemWidthInScoreGrid
 
     model: numbersList
     //          model: testModel
 
     delegate: Rectangle
     {
-    width: 95
-    height:95
+    width: itemWidthInScoreGrid
+    height:itemWidthInScoreGrid
     border.width: 1
     color: "transparent"
     border.color: Theme.primaryColor
@@ -387,7 +387,7 @@ SilicaGridView
     {
         anchors.fill: parent
         text: display
-        font.pointSize: 64
+        font.pixelSize: Theme.fontSizeLarge
         font.bold: true
         color: Theme.highlightColor
         horizontalAlignment: Text.AlignHCenter
@@ -427,9 +427,9 @@ ListView
 {
     id: addedView
     anchors.bottom: parent.bottom
-    height: 30
+    height: Theme.itemSizeSmall
     anchors.left: parent.left
-    anchors.right: appWindow.inPortrait ? parent.right : numbersView.left
+    anchors.right: isPortrait ? parent.right : numbersView.left
     model: addedModel
     orientation: ListView.Horizontal
 
@@ -437,9 +437,11 @@ ListView
 
     delegate: Label
     {
-            text: number + "  "
 
-        }
+        font.pixelSize: Theme.fontSizeSmall
+        text: number + "  "
+
+    }
 }
 
 
