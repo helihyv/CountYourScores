@@ -27,7 +27,7 @@ Page {
     property int currentPlayer: 1
     property int games: 1
 
-    property int itemWidthInScoreGrid: Screen.width/5
+    property int itemWidthInScoreGrid: isPortrait ? Screen.width/5 : Screen.height/10
 
     PageHeader      //This is just to provide nonmousearea space below PullDownMenu, since it does not seem to work in the emulator otherwise
     {
@@ -379,8 +379,8 @@ SilicaGridView
     width: 95
     height:95
     border.width: 1
-    color: "black"
-    border.color: "green"
+    color: "transparent"
+    border.color: Theme.primaryColor
 
 
     Label
@@ -389,7 +389,7 @@ SilicaGridView
         text: display
         font.pointSize: 64
         font.bold: true
-        color: "red"
+        color: Theme.highlightColor
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
     }
