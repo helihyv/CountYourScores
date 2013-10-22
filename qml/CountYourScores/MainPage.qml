@@ -27,6 +27,8 @@ Page {
     property int currentPlayer: 1
     property int games: 1
 
+    property int itemWidthInScoreGrid: Screen.width/5
+
     PageHeader      //This is just to provide nonmousearea space below PullDownMenu, since it does not seem to work in the emulator otherwise
     {
         id: pageTitle
@@ -148,7 +150,7 @@ Page {
 
         Label
         {
-            width: 100 //Placeholder for right positioning
+            width: itemWidthInScoreGrid //Placeholder for right positioning
             text: ""
         }
 
@@ -157,8 +159,9 @@ Page {
             model: 4
             Label
             {
-                width: 95
-                height: 50
+                width: itemWidthInScoreGrid
+//                height: Theme.ItemSizeSmall
+                font.pixelSize: Theme.fontSizeSmall
                 text: "Player" + (index+1)
                 color: (index+1 == currentPlayer) ? Theme.highlightColor : Theme.primaryColor
 
@@ -219,8 +222,9 @@ Page {
 
             Label
             {
-                width: 100
-                height: 30
+                width: itemWidthInScoreGrid
+                height: Theme.itemSizeSmall
+                font.pixelSize: Theme.fontSizeSmall
                 text: "Game " + (index+1)
             }
         }
@@ -239,15 +243,16 @@ Page {
 
         boundsBehavior: Flickable.StopAtBounds
 
-        cellHeight: 30
-        cellWidth: 95
+        cellHeight: Theme.itemSizeSmall
+        cellWidth: itemWidthInScoreGrid
 
         model: scoresModel
 
         delegate: Label
         {
 
-        width: 100
+        width: itemWidthInScoreGrid
+        font.pixelSize: Theme.fontSizeSmall
         text: score
 
         color: (index % 4) +1 == currentPlayer ? Theme.highlightColor : Theme.primaryColor
@@ -276,7 +281,8 @@ Row
 
     Label
     {
-        width: 100
+        width: itemWidthInScoreGrid
+        font.pixelSize: Theme.fontSizeSmall
         text: "Total"
     }
 
@@ -289,7 +295,8 @@ Row
         {
             property int player: index +1
             property int totalScore: 0
-            width: 95
+            width: itemWidthInScoreGrid
+            font.pixelSize: Theme.fontSizeSmall
             text: totalScore
 
             color: (index+1 == currentPlayer) ? Theme.highlightColor : Theme.primaryColor
