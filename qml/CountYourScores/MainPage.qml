@@ -28,6 +28,7 @@ Page {
     property int games: 1
 
     property int itemWidthInScoreGrid: Screen.width/5
+    property int itemHeightInScoreGrid: Theme.itemSizeExtraSmall/2
 
     PageHeader      //This is just to provide nonmousearea space below PullDownMenu, since it does not seem to work in the emulator otherwise
     {
@@ -223,7 +224,7 @@ Page {
             Label
             {
                 width: itemWidthInScoreGrid
-                height: Theme.itemSizeSmall
+                height: itemHeightInScoreGrid
                 font.pixelSize: Theme.fontSizeSmall
                 text: "Game " + (index+1)
             }
@@ -243,7 +244,7 @@ Page {
 
         boundsBehavior: Flickable.StopAtBounds
 
-        cellHeight: Theme.itemSizeSmall
+        cellHeight: itemHeightInScoreGrid
         cellWidth: itemWidthInScoreGrid
 
         model: scoresModel
@@ -252,6 +253,8 @@ Page {
         {
 
         width: itemWidthInScoreGrid
+        height: itemHeightInScoreGrid
+        horizontalAlignment: Text.AlignHCenter
         font.pixelSize: Theme.fontSizeSmall
         text: score
 
@@ -282,6 +285,7 @@ Row
     Label
     {
         width: itemWidthInScoreGrid
+        height: itemHeightInScoreGrid
         font.pixelSize: Theme.fontSizeSmall
         text: "Total"
     }
@@ -296,6 +300,8 @@ Row
             property int player: index +1
             property int totalScore: 0
             width: itemWidthInScoreGrid
+            height: itemHeightInScoreGrid
+            horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Theme.fontSizeSmall
             text: totalScore
 
