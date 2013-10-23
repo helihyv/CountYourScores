@@ -287,6 +287,7 @@ Row
         width: itemWidthInScoreGrid
         height: itemHeightInScoreGrid
         font.pixelSize: Theme.fontSizeSmall
+        font.family: Theme.fontFamily //For unkown reason this does not work automatically here
         text: "Total"
     }
 
