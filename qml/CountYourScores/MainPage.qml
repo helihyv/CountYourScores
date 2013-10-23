@@ -59,11 +59,12 @@ Page {
 
             MenuItem
             {
+
+                id: clearItem
                 text: qsTr("Clear all scores")
                 onClicked:
                 {
-                    clearScores()
-                    addGameMenuItem.visible = true
+                    remorse.execute(scoreView, "Clearing all scores", function () {clearScores(); addGameMenuItem.visible = true; } )
 
                 }
             }
@@ -78,7 +79,7 @@ Page {
                     if (games > 8)
                     {
                         visible = false
-                        platformIconId = "toolbar-next-dimmed"
+//                        platformIconId = "toolbar-next-dimmed"
                     }
                 }
             }
@@ -90,6 +91,11 @@ Page {
                 {
                     undo()
                 }
+            }
+
+            RemorseItem
+            {
+                id: remorse
             }
 
 
