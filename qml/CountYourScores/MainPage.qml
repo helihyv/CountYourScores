@@ -87,6 +87,9 @@ Page {
             MenuItem
             {
                 text: "Undo"
+
+                visible: addedModel.count > 0
+
                 onClicked:
                 {
                     undo()
