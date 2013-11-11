@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  main.cpp 13.8.2013
+**  main.cpp 11.11.2013
 **************************************************************************/
 
 #include <QGuiApplication>
@@ -22,16 +22,16 @@
 
 #include <QtQml>
 
-#include "sailfishapplication.h"
-
 #include "replaceableintegerlistmodel.h"
 #include "settingshandler.h"
 
+#include <sailfishapp.h>
+
 //#include <QDebug>
 
-Q_DECL_EXPORT int main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-    QScopedPointer<QGuiApplication> app(Sailfish::createApplication(argc, argv));
+    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
 
     app->setApplicationName("CountYourScores");
     app->setOrganizationName("CountYourScores");
@@ -39,9 +39,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
    qmlRegisterType<ReplaceableIntegerListModel> ("countyourscores",1,2,"ReplaceableIntegerListModel");
    qmlRegisterType<SettingsHandler> ("countyourscores",1,2,"SettingsHandler");
 
-   QScopedPointer<QQuickView> view(Sailfish::createView("main.qml"));
+   QScopedPointer<QQuickView> view(SailfishApp::createView());
+   view.data()->setSource(/*"main.qml"*/ SailfishApp::pathTo("qml/main.qml") );
 
-   Sailfish::showView(view.data());
+
+
+   view.data()->show();
 
     return app->exec();
 }

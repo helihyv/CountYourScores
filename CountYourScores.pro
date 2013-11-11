@@ -1,6 +1,7 @@
 # The name of your app
 TARGET =CountYourScores
 
+CONFIG  += sailfishapp
 
 SOURCES += main.cpp \
     replaceableintegerlistmodel.cpp \
@@ -18,8 +19,7 @@ OTHER_FILES += \
     qml/CountYourScores/MainPage.qml \
     qml/CountYourScores/main.qml \
     qml/CountYourScores/CreateNumberSetPage.qml \
-    qml/CountYourScores/AboutPage.qml \
-    rpm/CountYourScores.yaml
+    qml/CountYourScores/AboutPage.qml
 
 HEADERS += \
     replaceableintegerlistmodel.h \
@@ -28,10 +28,10 @@ HEADERS += \
 # QML files and folders
 #qml.files = *.qml pages cover main.qml
 #qml.files = *.qml
-qml.files = *.qml qml/CountYourScores/*.qml
+#qml.files = *.qml qml/CountYourScores/*.qml
 
-# The .desktop file
-desktop.files = CountYourScores.desktop
+## The .desktop file
+#desktop.files = CountYourScores.desktop
 
 
-include(sailfishapplication/sailfishapplication.pri)
+
