@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsPage 25.8.2013
+**  SettingsPage 20.11.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -38,9 +38,9 @@ Page
         onClicked:
         {
             getSetNames(true) //include "default" in the set name list
-            numberSetDialog.selectedIndex = 0
-            numberSetDialog.open()
-            numberSetDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
+                       selectionView.currentIndex = 0
+                        numberSetDialog.open()
+//                        numberSetDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
         }
     }
 
@@ -60,7 +60,7 @@ Page
 
         for (var i = 0; i < names.length; i++)
         {
-//            console.debug(names[i])
+            console.debug(names[i])
 
             numberSetNamesModel.append({"name" : names[i]})
 
@@ -82,21 +82,64 @@ Page
         property int indexOfCurrentSet: 0
     }
 
-//    SelectionDialog
-//    {
-//        id: numberSetDialog
+    Dialog
+    {
+        id: numberSetDialog
 
-//        model: numberSetNamesModel
-
-//        titleText: qsTr("Choose the number list")
+//        Label{ text: "Näkkykö?"}
 
 
-//        onAccepted:
-//        {
-//            mainPage.changeNumberSet(numberSetNamesModel.getString(selectedIndex))
-//            settingsHandler.saveCurrentSet(numberSetNamesModel.getString(selectedIndex))
-//        }
-//   }
+
+        SilicaListView
+        {
+            id: selectionView
+            model: numberSetNamesModel
+
+
+
+            anchors.top: header.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+
+//            model: 10
+
+
+            delegate: ListItem
+            {
+                contentHeight: Theme.itemSizeMedium
+
+//                Rectangle{ color: "black"
+//                height: Theme.itemSizeMedium
+//                width: 300
+//                }
+
+                Label
+                {
+
+                    text: name
+
+                }
+            }
+        }
+
+
+
+        DialogHeader
+        {
+
+         id: header
+
+
+
+        acceptText: qsTr("Select number list")
+
+        }
+        onAccepted:
+        {
+            mainPage.changeNumberSet(numberSetNamesModel.getString(selectedIndex))
+            settingsHandler.saveCurrentSet(numberSetNamesModel.getString(selectedIndex))
+        }
+   }
 
 
     Button
