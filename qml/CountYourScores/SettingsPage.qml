@@ -86,8 +86,6 @@ Page
     {
         id: numberSetDialog
 
-//        Label{ text: "Näkkykö?"}
-
 
 
         SilicaListView
@@ -100,18 +98,14 @@ Page
             anchors.top: header.bottom
             anchors.left: parent.left
             anchors.right: parent.right
+            anchors.bottom: parent.bottom
 
-//            model: 10
 
 
             delegate: ListItem
             {
                 contentHeight: Theme.itemSizeMedium
 
-//                Rectangle{ color: "black"
-//                height: Theme.itemSizeMedium
-//                width: 300
-//                }
 
                 Label
                 {
