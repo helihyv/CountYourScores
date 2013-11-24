@@ -40,7 +40,7 @@ Page
             getSetNames(true) //include "default" in the set name list
                        selectionView.currentIndex = 0
                         numberSetDialog.open()
-//                        numberSetDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
+                        selectionView.currentIndex = numberSetNamesModel.indexOfCurrentSet
         }
     }
 
@@ -111,7 +111,18 @@ Page
                 {
 
                     text: name
+                    color: selectionView.isCurrentItem ? Theme.highlightColor : Theme.primaryColor
 
+                }
+
+                MouseArea
+                {
+                    anchors.fill: parent
+
+                    onClicked:
+                    {
+                        selectionView.currentIndex = index
+                    }
                 }
             }
         }
@@ -130,8 +141,11 @@ Page
         }
         onAccepted:
         {
-            mainPage.changeNumberSet(numberSetNamesModel.getString(selectedIndex))
-            settingsHandler.saveCurrentSet(numberSetNamesModel.getString(selectedIndex))
+            mainPage.changeNumberSet(numberSetNamesModel.get(selectionView.currentIndex).name)
+            settingsHandler.saveCurrentSet(numberSetNamesModel.get(selectionView.currentIndex).name)
+            console.debug(selectionView.currentIndex)
+            console.debug(numberSetNamesModel.get(selectionView.currentIndex))
+            console.debug(numberSetNamesModel.get(selectionView.currentIndex).name)
         }
    }
 
