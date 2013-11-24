@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  CreateNumberSetPage 25.8.2013
+**  CreateNumberSetPage 24.11.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -105,7 +105,7 @@ Page
         anchors.horizontalCenter: parent.horizontalCenter
 
 
-        columns: isPortrait ? 2 : 4
+        columns: isPortrait ? 3 : 4
 
 
 
@@ -147,7 +147,7 @@ Page
             }
             else if (settingsHandler.setNameExists(nameField.text))
             {
-                confirmOverwriteDialog.open()
+                remorse.execute("A number set with the name " + nameField.text + " already exists. Overwriting",saveSet())
 
             }
 
@@ -166,23 +166,11 @@ Page
         id: settingsHandler
     }
 
-//    QueryDialog
-//    {
-//        id: confirmOverwriteDialog
 
-//        titleText: "Confirm overwrite?"
-
-//        message: "A number set with the name " + nameField.text + " already exists. Do you wish to overwrite it?"
-
-//        acceptButtonText: "Yes"
-
-//        rejectButtonText: "No"
-
-//        onAccepted:
-//        {
-//            saveSet()
-//        }
-//    }
+    RemorsePopup
+    {
+        id: remorse
+    }
 
 //    QueryDialog
 //    {

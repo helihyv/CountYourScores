@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  SettingsPage 20.11.2013
+**  SettingsPage 24.11.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -38,9 +38,10 @@ Page
         onClicked:
         {
             getSetNames(true) //include "default" in the set name list
-                       selectionView.currentIndex = 0
-                        numberSetDialog.open()
-                        selectionView.currentIndex = numberSetNamesModel.indexOfCurrentSet
+            selectionView.currentIndex = numberSetNamesModel.indexOfCurrentSet
+            numberSetDialog.action = "select"
+            numberSetDialog.open()
+
         }
     }
 
@@ -86,7 +87,7 @@ Page
     {
         id: numberSetDialog
 
-
+            property string action //This needs to be set to "select", "edit" or "delete
 
         SilicaListView
         {
@@ -94,12 +95,10 @@ Page
             model: numberSetNamesModel
 
 
-
             anchors.top: header.bottom
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-
 
 
             delegate: ListItem
@@ -141,8 +140,24 @@ Page
         }
         onAccepted:
         {
-            mainPage.changeNumberSet(numberSetNamesModel.get(selectionView.currentIndex).name)
-            settingsHandler.saveCurrentSet(numberSetNamesModel.get(selectionView.currentIndex).name)
+            if (action == "select")
+            {
+                mainPage.changeNumberSet(numberSetNamesModel.get(selectionView.currentIndex).name)
+                settingsHandler.saveCurrentSet(numberSetNamesModel.get(selectionView.currentIndex).name)
+            }
+
+            else if (action == "edit")
+            {
+                createNumberSetPage.editing = true
+                createNumberSetPage.numbersetToEdit = numberSetNamesModel.get(selectionView.currentIndex).name
+                pageStack.push(createNumberSetPage)
+            }
+
+            else if (action == "delete")
+            {
+                remorse.execute("Deleting the number set " + numberSetNamesModel.get(selectionView.currentIndex).name, deleteSelectedSet)
+            }
+
         }
    }
 
@@ -177,28 +192,15 @@ Page
         onClicked:
         {
             getSetNames(false) //do not add "default" as it cannot be edited
+            numberSetDialog.action = "edit"
+            selectionView.currentIndex = numberSetNamesModel.indexOfCurrentSet
+            numberSetDialog.open()
 
-            selectSetToBeEditedDialog.selectedIndex = 0
-            selectSetToBeEditedDialog.open()
-            selectSetToBeEditedDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
         }
     }
 
 
 
-//    SelectionDialog
-//    {
-//        id: selectSetToBeEditedDialog
-//        model: numberSetNamesModel
-//        titleText: qsTr("Choose the set to edit")
-
-//        onAccepted:
-//        {
-//            createNumberSetPage.editing = true
-//            createNumberSetPage.numbersetToEdit = numberSetNamesModel.get(selectedIndex).name
-//            pageStack.push(createNumberSetPage)
-//        }
-//    }
 
     Button
     {
@@ -212,61 +214,37 @@ Page
         onClicked:
         {
             getSetNames(false) //do not add "default" as it cannot be deleted
+            numberSetDialog.action = "delete"
+            selectionView.currentIndex = numberSetNamesModel.indexOfCurrentSet
+            numberSetDialog.open()
 
-            selectSetToBeDeletedDialog.selectedIndex = 0
-            selectSetToBeDeletedDialog.open()
-            selectSetToBeDeletedDialog.selectedIndex = numberSetNamesModel.indexOfCurrentSet
         }
     }
 
 
-//    SelectionDialog
-//    {
-//        id: selectSetToBeDeletedDialog
-//        model: numberSetNamesModel
-
-//        titleText: qsTr("Choose the set to delete")
-
-//        onAccepted:
-//        {
-//            confirmDeleteSetDialog.message = "Do you really wish to delete the number set " + numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name +"?"
-//            confirmDeleteSetDialog.open()
-//        }
-//    }
-
-//    QueryDialog
-//    {
-//        id: confirmDeleteSetDialog
-
-//        titleText: "Confirm delete set"
-
-////        message: "Do you really wish to delete the number set " + numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name +"?"
-
-//        acceptButtonText: "Yes"
-
-//        rejectButtonText: "No"
-
-//        onAccepted:
-//        {
-
-//            //If the set to be deleted was in use, switch to the default set.
-
-//            if (numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name == settingsHandler.currentSet())
-//            {
-//                mainPage.changeNumberSet("default")
-//                settingsHandler.saveCurrentSet("default")
-
-//            }
-
-//            //Delete set
-
-//            settingsHandler.removeSet( numberSetNamesModel.get(selectSetToBeDeletedDialog.selectedIndex).name)
-
-//        }
-//    }
+    RemorsePopup
+    {
+        id: remorse
+    }
 
 
+    function deleteSelectedSet()
+    {
 
+        //If the set to be deleted was in use, switch to the default set.
+
+        if (numberSetNamesModel.get(selectionView.currentIndex).name == settingsHandler.currentSet())
+        {
+            mainPage.changeNumberSet("default")
+            settingsHandler.saveCurrentSet("default")
+
+        }
+
+        //Delete set
+
+        settingsHandler.removeSet( numberSetNamesModel.get(selectionView.currentIndex).name)
+
+    }
 
 
     SettingsHandler
