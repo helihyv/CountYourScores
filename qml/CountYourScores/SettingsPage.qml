@@ -115,14 +115,10 @@ Page
 
                 }
 
-                MouseArea
-                {
-                    anchors.fill: parent
+                onClicked:
 
-                    onClicked:
-                    {
-                        selectionView.currentIndex = index
-                    }
+                {
+                    selectionView.currentIndex = index
                 }
             }
         }
@@ -143,9 +139,6 @@ Page
         {
             mainPage.changeNumberSet(numberSetNamesModel.get(selectionView.currentIndex).name)
             settingsHandler.saveCurrentSet(numberSetNamesModel.get(selectionView.currentIndex).name)
-            console.debug(selectionView.currentIndex)
-            console.debug(numberSetNamesModel.get(selectionView.currentIndex))
-            console.debug(numberSetNamesModel.get(selectionView.currentIndex).name)
         }
    }
 
