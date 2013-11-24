@@ -104,6 +104,9 @@ Page
 
             delegate: ListItem
             {
+
+                id: selectionDelegate
+
                 contentHeight: Theme.itemSizeMedium
 
 
@@ -111,7 +114,7 @@ Page
                 {
 
                     text: name
-                    color: selectionView.isCurrentItem ? Theme.highlightColor : Theme.primaryColor
+                    color: selectionDelegate.ListView.isCurrentItem ? Theme.highlightColor : Theme.primaryColor
 
                 }
 
@@ -119,6 +122,7 @@ Page
 
                 {
                     selectionView.currentIndex = index
+
                 }
             }
         }
