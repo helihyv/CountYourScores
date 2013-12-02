@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  CreateNumberSetPage 24.11.2013
+**  CreateNumberSetPage 2.12.2013
 **************************************************************************/
 
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
@@ -79,20 +79,28 @@ Page
 
     }
 
-    Column
+
+    PageHeader
     {
-        id: nameColumn
-        anchors.horizontalCenter: parent.horizontalCenter
-
-
-        TextField
-        {
-            id: nameField
-            placeholderText: "Name of the number set"
-            width: 300
-
-        }
+        id: headerItem
+        title: "CountYourScores"
     }
+
+
+    TextField
+    {
+        id: nameField
+        placeholderText: "Name of the number set"
+//        inputMask: "x"
+        validator: RegExpValidator {regExp: /.+/}
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: Theme.paddingLarge
+        anchors.rightMargin: Theme.paddingLarge
+        anchors.top: headerItem.bottom
+
+    }
+
 
 
 
@@ -100,8 +108,8 @@ Page
     {
         id: newNumbersColumn
 
-        anchors.top: nameColumn.bottom
-        anchors.topMargin: 20
+        anchors.top: nameField.bottom
+        anchors.topMargin: Theme.paddingMedium
         anchors.horizontalCenter: parent.horizontalCenter
 
 
@@ -121,7 +129,7 @@ Page
                 inputMethodHints: Qt.ImhDigitsOnly
                 validator: IntValidator{}
                 placeholderText: "Number " + (index +1)
-                width: 200
+                width: Theme.itemSizeExtraLarge
             }
 
 
@@ -133,8 +141,9 @@ Page
     {
         id: saveButton
         anchors.top: newNumbersColumn.bottom
-        anchors.topMargin: 20
+        anchors.topMargin: Theme.paddingMedium
         anchors.horizontalCenter: parent.horizontalCenter
+
 
         text: qsTr("Save")
 
