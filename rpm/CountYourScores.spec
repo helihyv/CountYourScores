@@ -6,6 +6,9 @@
 Name:       CountYourScores
 
 # >> macros
+
+%define __requires_exclude ^libc|libgcc_s.*$
+
 # << macros
 
 %{!?qtc_qmake:%define qtc_qmake %qmake}
@@ -62,14 +65,13 @@ desktop-file-install --delete-original       \
 
 %files
 %defattr(-,root,root,-)
+/usr/share/icons/hicolor/86x86/apps
 /usr/share/CountYourScores/qml
 %{_bindir}
 %{_datadir}/%{name}/qml
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/90x90/apps/%{name}.png
 /usr/bin
 /usr/share/applications
-/usr/share/icons/hicolor/90x90/apps
 /usr/share/CountYourScores
 # >> files
 # << files
