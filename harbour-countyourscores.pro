@@ -1,5 +1,5 @@
 # The name of your app
-TARGET =CountYourScores
+TARGET =harbour-countyourscores
 
 CONFIG  += sailfishapp
 
@@ -11,8 +11,8 @@ SOURCES += main.cpp \
 
 
 OTHER_FILES += \
-    rpm/CountYourScores.yaml \
-    rpm/CountYourScores.spec \
+    rpm/harbour-countyourscores.yaml \
+    rpm/harbour-countyourscores.spec \
 #    CountYourScoresSplashscreenPortrait.png \
 #    CountYourScoresSplashscreenLandscape.png
     qml/CountYourScores/SettingsPage.qml \

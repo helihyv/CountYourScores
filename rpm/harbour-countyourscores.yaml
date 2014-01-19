@@ -1,4 +1,4 @@
-Name: CountYourScores
+Name: harbour-countyourscores
 Summary: Used to count scores on e.g. card games
 Version: 1.0.1
 Release: 1
@@ -18,14 +18,12 @@ PkgConfigBR:
 Requires:
 - sailfishsilica-qt5
 Files:
-- /usr/share/CountYourScores/qml
+- /usr/share/icons/hicolor/86x86/apps
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
 - '%{_bindir}'
 - '%{_datadir}/%{name}/qml'
 - '%{_datadir}/applications/%{name}.desktop'
-- '%{_datadir}/icons/hicolor/90x90/apps/%{name}.png'
 - /usr/bin
 - /usr/share/applications
-- /usr/share/icons/hicolor/90x90/apps
-- /usr/share/CountYourScores
-- 
+- /usr/share/harbour-countyourscores
 PkgBR: []

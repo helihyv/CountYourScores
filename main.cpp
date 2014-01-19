@@ -36,8 +36,8 @@ int main(int argc, char *argv[])
     app->setApplicationName("CountYourScores");
     app->setOrganizationName("CountYourScores");
 
-   qmlRegisterType<ReplaceableIntegerListModel> ("countyourscores",1,2,"ReplaceableIntegerListModel");
-   qmlRegisterType<SettingsHandler> ("countyourscores",1,2,"SettingsHandler");
+   qmlRegisterType<ReplaceableIntegerListModel> ("harbour.countyourscores.modelsandsettings",1,2,"ReplaceableIntegerListModel");
+   qmlRegisterType<SettingsHandler> ("harbour.countyourscores.modelsandsettings",1,2,"SettingsHandler");
 
    QScopedPointer<QQuickView> view(SailfishApp::createView());
    view.data()->setSource(/*"main.qml"*/ SailfishApp::pathTo("qml/CountYourScores/main.qml") );

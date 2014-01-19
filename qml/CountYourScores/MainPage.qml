@@ -19,7 +19,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import countyourscores 1.2
+import harbour.countyourscores.modelsandsettings 1.2
 
 Page {
     //    tools: commonTools
