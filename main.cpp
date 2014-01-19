@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
    qmlRegisterType<SettingsHandler> ("countyourscores",1,2,"SettingsHandler");
 
    QScopedPointer<QQuickView> view(SailfishApp::createView());
-   view.data()->setSource(/*"main.qml"*/ SailfishApp::pathTo("qml/main.qml") );
+   view.data()->setSource(/*"main.qml"*/ SailfishApp::pathTo("qml/CountYourScores/main.qml") );
 
 
 
