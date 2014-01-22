@@ -25,13 +25,6 @@ HEADERS += \
     replaceableintegerlistmodel.h \
     settingshandler.h
 
-# QML files and folders
-#qml.files = *.qml pages cover main.qml
-#qml.files = *.qml
-#qml.files = *.qml qml/CountYourScores/*.qml
-
-## The .desktop file
-#desktop.files = CountYourScores.desktop
 
 
 
