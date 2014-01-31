@@ -14,26 +14,33 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  AboutPage 23.10.2013
+**  AboutPage 31.1.2014
 **************************************************************************/
 
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page
 {
-//    tools: commonTools
+
+    PageHeader
+    {
+        id: aboutHeader
+
+        title: "CountYourScores v. 1.0.1"
+    }
 
     Label
     {
-        anchors.fill: parent
+        anchors.top: aboutHeader.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
 
         font.family: Theme.fontFamily
         textFormat: Text.RichText
 
 
-        text: "<h2>CountYourScores v. 1.0.1</h2>(c) Heli Hyvättinen 2012­ - 2013<br>This program is free software under the General Public License 3" +
+        text: "(c) Heli Hyvättinen 2012–2014<br>This program is free software under the General Public License 3" +
                              "<p>The source code is available from <a href=https://github.com/helihyv/CountYourScores> https://github.com/helihyv/CountYourScores</a>" +
               "<p> You can find instructions of use on <a href=http://helihyv.github.com/CountYourScores/ > http://helihyv.github.com/CountYourScores/</a>"+
                 "<p>Bugreports and feature requests are welcome at <a href=https://github.com/helihyv/CountYourScores/issues> https://github.com/helihyv/CountYourScores/issues</a>"
