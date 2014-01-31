@@ -14,17 +14,18 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  main.qml 25.8.2013
+**  main.qml 31.1.2014
 **************************************************************************/
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import harbour.countyourscores.modelsandsettings 1.2
 
 ApplicationWindow {
     id: appWindow
 
     initialPage: mainPage
+
+    cover: coverPage
 
     MainPage {
         id: mainPage
@@ -45,106 +46,10 @@ ApplicationWindow {
         id: createNumberSetPage
     }
 
-//    ToolBarLayout {
-//        id: commonTools
-//        visible: true
-
-//        ToolIcon
-//        {
-//            iconId: "toolbar-home"
-//            visible: pageStack.depth > 2
-//            onClicked:
-//            {
-//                pageStack.pop(null)
-//            }
-//        }
-
-
-//        ToolIcon
-//        {
-//            platformIconId: "toolbar-back"
-//            onClicked: pageStack.pop()
-//            visible: pageStack.currentPage == mainPage ? false : true
-//        }
-
-//        ToolIcon
-//        {
-//            platformIconId: "toolbar-undo"
-//            visible: pageStack.currentPage == mainPage ? true : false
-//            onClicked:
-//            {
-//                mainPage.undo()
-//            }
-//        }
-
-//        ToolIcon
-
-//        {
-//            id: addGameIcon
-//            platformIconId: "toolbar-next"
-//            visible: pageStack.currentPage == mainPage ? true : false
-//            onClicked:
-//            {
-//                mainPage.addGame()
-//                if (mainPage.games > 8)
-//                {
-//                    enabled = false
-//                    platformIconId = "toolbar-next-dimmed"
-//                }
-//            }
-//        }
-
-//        ToolIcon
-//        {
-//            platformIconId: "toolbar-delete"
-//            visible: pageStack.currentPage == mainPage ? true : false
-//            onClicked:
-//            {
-//                confirmClearQuery.open()
-
-//            }
-//        }
-
-//        ToolIcon {
-//            platformIconId: "toolbar-view-menu"
-//            anchors.right: (parent === undefined) ? undefined : parent.right
-//            onClicked: (myMenu.status === DialogStatus.Closed) ? myMenu.open() : myMenu.close()
-//        }
-//    }
-
-//   Menu {
-//        id: myMenu
-//        visualParent: pageStack
-//        MenuLayout {
-//            MenuItem
-//            {
-//                text: qsTr("About")
-//                onClicked: pageStack.push(aboutPage)
-//            }
-
-//            MenuItem
-//            {
-//                text: qsTr("Settings")
-//                onClicked: pageStack.push(settingsPage)
-//            }
-
-//        }
-//    }
-
-
-
-    SettingsHandler
+    CoverPage
     {
-        id: settingsHandler
+        id: coverPage
     }
-
-    Component.onCompleted:
-    {
-
-//        theme.inverted = settingsHandler.isBlackThemeOn()
-    }
-
-
 }
 
 
