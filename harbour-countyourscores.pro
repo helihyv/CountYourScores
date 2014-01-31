@@ -19,7 +19,8 @@ OTHER_FILES += \
     qml/CountYourScores/MainPage.qml \
     qml/CountYourScores/main.qml \
     qml/CountYourScores/CreateNumberSetPage.qml \
-    qml/CountYourScores/AboutPage.qml
+    qml/CountYourScores/AboutPage.qml \
+    qml/CountYourScores/CoverPage.qml
 
 HEADERS += \
     replaceableintegerlistmodel.h \
