@@ -1,6 +1,6 @@
 /**************************************************************************
 **  MainPage.qml (of CountYourScores)
-**  Copyright (c) 2012–2013 Heli Hyvättinen
+**  Copyright (c) 2012–2014 Heli Hyvättinen
 **
 **  This program is free software: you can redistribute it and/or modify
 **  it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 **
 **  See <http://www.gnu.org/licenses/>
 **
-**  MainPage 25.8.2013
+**  MainPage 1.2.2014
 **************************************************************************/
 
 import QtQuick 2.0
@@ -22,7 +22,6 @@ import Sailfish.Silica 1.0
 import harbour.countyourscores.modelsandsettings 1.2
 
 Page {
-    //    tools: commonTools
 
     property int currentPlayer: 1
     property int games: 1
@@ -30,11 +29,13 @@ Page {
     property int itemWidthInScoreGrid: Screen.width/5
     property int itemHeightInScoreGrid: Theme.itemSizeExtraSmall/2
 
+
     PageHeader      //This is just to provide nonmousearea space below PullDownMenu, since it does not seem to work in the emulator otherwise
     {
         id: pageTitle
         title: ""
     }
+
 
     SilicaFlickable
     {
@@ -100,52 +101,6 @@ Page {
             {
                 id: remorse
             }
-
-
-
-
-
-
-            //        ToolIcon
-            //        {
-            //            platformIconId: "toolbar-undo"
-            //            visible: pageStack.currentPage == mainPage ? true : false
-            //            onClicked:
-            //            {
-            //                mainPage.undo()
-            //            }
-            //        }
-
-            //        ToolIcon
-
-            //        {
-//                        id: addGameIcon
-            //            platformIconId: "toolbar-next"
-            //            visible: pageStack.currentPage == mainPage ? true : false
-            //            onClicked:
-            //            {
-            //                mainPage.addGame()
-            //                if (mainPage.games > 8)
-            //                {
-            //                    enabled = false
-            //                    platformIconId = "toolbar-next-dimmed"
-            //                }
-            //            }
-            //        }
-
-            //        ToolIcon
-            //        {
-            //            platformIconId: "toolbar-delete"
-            //            visible: pageStack.currentPage == mainPage ? true : false
-            //            onClicked:
-            //            {
-            //                mainPage.clearScores()
-            //                addGameIcon.enabled = true
-            //                addGameIcon.platformIconId = "toolbar-next"
-
-            //            }
-            //        }
-
 
         }
     }
@@ -511,5 +466,19 @@ function changeNumberSet(setName)
     numbersList.switchToNumberSet(setName)
 }
 
+function getTotalScores()
+{
+    var scores = new Array (0,0,0,0);
+
+    for (var i = 0; i < 4; i++)
+    {
+        scores[i] = totalScoreRepeater.itemAt(i).totalScore
+    }
+
+    return  scores
+}
+
 
 }
+
+
