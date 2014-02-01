@@ -31,7 +31,8 @@ CoverBackground
         Label
         {
             text: "CountYourScores"
-            font.pointSize: Theme.fontSizeSmall
+
+            font.family: Theme.fontFamily //For an unknown reason this does not happen automatically
         }
 
         Repeater
